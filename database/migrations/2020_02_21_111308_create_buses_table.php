@@ -15,10 +15,11 @@ class CreateBusesTable extends Migration
     {
         Schema::create('buses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->dateTime('time');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
