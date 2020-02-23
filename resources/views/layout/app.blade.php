@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Foyej Seed Company </title>
+    <title>E Ticket</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('file/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -41,7 +41,7 @@
 
 
 
-@include('layout.form-link')
+{{-- @include('layout.form-link') --}}
 
     @include('layout.nav')
 
@@ -49,7 +49,8 @@
 
         <!-- Page Wrapper -->
         <div id="wrapper">
-            @include('layout.sidevar')
+        @yield('sidebar');
+     
             @yield('content')
         </div>
     </div>
@@ -84,9 +85,11 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
-    <script src="{{asset('js/custom/datatables.js')}}"></script>
-
+    @yield('JavaScript')
     
+    <script src="{{asset('js/custom/counter.js')}}"></script>
+    <script src="{{asset('js/custom/road.js')}}"></script>
+    <script src="{{asset('js/custom/schedule.js')}}"></script>
 
 
 

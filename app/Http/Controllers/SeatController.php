@@ -14,7 +14,9 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        $seats= seat::all();
+
+        return view('seats',compact('seats'));
     }
 
     /**
@@ -58,6 +60,22 @@ class SeatController extends Controller
     public function edit(seat $seat)
     {
         //
+    }
+    public function seatUpdate(Request $request){
+
+
+
+        $seat= seat::find($request->id);
+        $seat->name= $request->name;
+
+        $seat->save();
+
+
+
+        return redirect(route('seats.index'));
+
+
+
     }
 
     /**

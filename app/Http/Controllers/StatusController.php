@@ -14,8 +14,10 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $statuses= status::all();
+        return view('statuses' , compact('statuses'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +37,14 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $status = new status;
+        $status->name= $request->name;
+        $status->description = $request->description;
+
+        $status ->save();
+
+        return redirect(route('statuses.index'));
     }
 
     /**
@@ -71,6 +80,19 @@ class StatusController extends Controller
     {
         //
     }
+    public function statusUpdate( Request $request){
+
+     
+        $status= status::find($request->id);
+        $status->name= $request->name;
+
+        $status->description= $request->description;
+        $status->save();
+
+
+
+        return redirect(route('statuses.index'));
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +102,11 @@ class StatusController extends Controller
      */
     public function destroy(status $status)
     {
-        //
+      
+        $status->delete();
+
+
+
+        return redirect(route('statuses.index'));
     }
 }

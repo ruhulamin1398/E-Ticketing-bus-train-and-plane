@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBusesTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,18 @@ class CreateBusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('buses', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->date('date');
+            $table->time('time');
+            $table->unsignedBigInteger('road_id');
             $table->timestamps();
+
+            
+            $table->foreign('road_id')->references('id')->on('roads');
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -26,6 +32,6 @@ class CreateBusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buses');
+        Schema::dropIfExists('schedules');
     }
 }

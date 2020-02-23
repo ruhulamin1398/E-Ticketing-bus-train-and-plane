@@ -15,7 +15,7 @@ class CreateBusSeatsTable extends Migration
     {
         Schema::create('bus_seats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('bus_id');
+            $table->unsignedBigInteger('schedule_id');
             $table->unsignedBigInteger('seat_id');
             $table->unsignedBigInteger('status_id');
             
@@ -25,7 +25,7 @@ class CreateBusSeatsTable extends Migration
 
             
             $table->foreign('status_id')->references('id')->on('statuses');
-            $table->foreign('bus_id')->references('id')->on('buses');
+            $table->foreign('schedule_id')->references('id')->on('schedules');
             $table->foreign('seat_id')->references('id')->on('seats');
 
         });

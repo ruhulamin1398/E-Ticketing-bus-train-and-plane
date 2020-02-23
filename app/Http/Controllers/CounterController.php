@@ -14,7 +14,8 @@ class CounterController extends Controller
      */
     public function index()
     {
-        //
+        $counters= counter::all();
+       return view('counters' , compact('counters'));
     }
 
     /**
@@ -35,7 +36,13 @@ class CounterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $counter = new counter;
+        $counter->name= $request->name;
+        $counter->description = $request->description;
+
+        $counter ->save();
+
+        return redirect(route('counters.index'));
     }
 
     /**
@@ -71,6 +78,19 @@ class CounterController extends Controller
     {
         //
     }
+    public function counterUpdate( Request $request){
+
+        $counter= counter::find($request->id);
+        $counter->name= $request->name;
+
+        $counter->description= $request->description;
+        $counter->save();
+
+
+
+        return redirect(route('counters.index'));
+
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +100,11 @@ class CounterController extends Controller
      */
     public function destroy(counter $counter)
     {
-        //
+     
+        $counter->delete();
+
+
+
+        return redirect(route('counters.index'));
     }
 }

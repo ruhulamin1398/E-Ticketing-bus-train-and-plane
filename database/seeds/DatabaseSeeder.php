@@ -47,6 +47,13 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000401',
                 'password' => Hash::make(1234)
             ],
+            [
+                'name' => 'ruhul',
+                'role_id' => 1,
+                'email' => 'ruhul.ok@gmail.com',
+                'phone' => '01840000405',
+                'password' => Hash::make(1116430725)
+            ],
 
         ]);
         DB::table('seats')->insert([
@@ -201,9 +208,9 @@ class DatabaseSeeder extends Seeder
         DB::table('roads')->insert([
 
             [
-                'starting_counter_id' => 1,
-                'destination_counter_id' => 2,
-                'distance' => '500',
+                'from_counter_id' => 1,
+                'to_counter_id' => 2,
+                'distance' => '300',
                 'cost' => 475
             ],
 

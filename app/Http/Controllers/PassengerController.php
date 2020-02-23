@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\counter;
-use App\road;
+use App\passenger;
 use Illuminate\Http\Request;
 
-class RoadController extends Controller
+class PassengerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class RoadController extends Controller
      */
     public function index()
     {
-        $counters = counter::all();
-        $roads = road::all();
-        return view('roads', compact('roads','counters'));
+       return view('passenger');
     }
 
     /**
@@ -38,26 +35,16 @@ class RoadController extends Controller
      */
     public function store(Request $request)
     {
-        $road = new road;
-        $road->from_counter_id= $request->from_counter_id;
-        $road->to_counter_id= $request->to_counter_id;
-        $road->distance= $request->distance;
-        $road->cost= $request->cost;
-        $road->save();
-
-        return redirect(route('roads.index'));
-
+        //
     }
-
-
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\road  $road
+     * @param  \App\passenger  $passenger
      * @return \Illuminate\Http\Response
      */
-    public function show(road $road)
+    public function show(passenger $passenger)
     {
         //
     }
@@ -65,10 +52,10 @@ class RoadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\road  $road
+     * @param  \App\passenger  $passenger
      * @return \Illuminate\Http\Response
      */
-    public function edit(road $road)
+    public function edit(passenger $passenger)
     {
         //
     }
@@ -77,36 +64,22 @@ class RoadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\road  $road
+     * @param  \App\passenger  $passenger
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, road $road)
+    public function update(Request $request, passenger $passenger)
     {
         //
     }
-    public function roadUpdate( Request $request){
 
-        $road= road::find($request->id);
-        $road->name= $request->name;
-
-        $road->description= $request->description;
-        $road->save();
-
-
-
-        return redirect(route('roads.index'));
-
-    }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\road  $road
+     * @param  \App\passenger  $passenger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(road $road)
+    public function destroy(passenger $passenger)
     {
-        $road->delete();
-
-        return redirect(route('roads.index'));
+        //
     }
 }

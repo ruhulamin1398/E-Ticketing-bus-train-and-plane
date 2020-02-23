@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layout.app')
+
+@section('sidebar')
+@include('layout.passengerSidebar')
+@endsection
 
 @section('content')
 <div class="container">

@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
@@ -78,5 +79,37 @@
             @yield('content')
         </main>
     </div>
+
+
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('file/jquery/jquery.min.js')}}"></script>
+
+
+    <script src="{{asset('file/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{asset('file/jquery-easing/jquery.easing.min.js')}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{asset('file/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
+
+
+
+    <!-- Page level plugins -->
+    <script src="{{asset('file/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('file/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+    <script src="{{asset('js/custom/datatables.js')}}"></script>
 </body>
 </html>
+
