@@ -109,4 +109,24 @@ class RoadController extends Controller
 
         return redirect(route('roads.index'));
     }
+
+
+
+
+    public function roadScheduleApi(Request $request)
+    {
+       return  road::find($request->id)->schedules->where('date_time',">",now());
+
+        
+    }
+
+    public function roadViewApi(Request $request)
+    {
+       return  road::find($request->id);
+
+        
+    }
+
+
+ 
 }

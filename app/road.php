@@ -17,4 +17,9 @@ class road extends Model
         return $this->hasOne('App\counter','id','to_counter_id');
     }
 
+    public function schedules()
+    {
+        return $this->hasMany('App\schedule');
+    }
+
 }

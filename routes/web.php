@@ -40,3 +40,12 @@ Route::post('seat-update', 'SeatController@seatUpdate')->name("seat-update");
 
 Route::resource('statuses', 'StatusController');
 Route::post('status-update', 'StatusController@statusUpdate')->name("status-update");
+
+
+
+
+//// Api routes
+
+Route::get('road-schedule-api', 'RoadController@roadScheduleApi')->name('road-schedule-api');
+Route::get('seat-schedule-api', 'ScheduleController@seatScheduleApi')->name('seat-schedule-api');
+Route::get('road-view-api', 'RoadController@roadViewApi')->name('road-view-api');

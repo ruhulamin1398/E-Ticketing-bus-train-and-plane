@@ -17,7 +17,9 @@ class CreateSchedulesTable extends Migration
             $table->bigIncrements('id');
             $table->date('date');
             $table->time('time');
+            $table->dateTime('date_time');
             $table->unsignedBigInteger('road_id');
+            $table->integer('status')->default(1);
             $table->timestamps();
 
             

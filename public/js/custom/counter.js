@@ -1,3 +1,10 @@
+
+
+
+  $(document).ready(function () {
+    
+
+
 $(document).on('click', "#edit-item", function() {
 
 
@@ -31,3 +38,5 @@ $(document).on('click', "#edit-item", function() {
     $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
     $("#edit-form").trigger("reset");
   });
+
+});

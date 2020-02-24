@@ -1,3 +1,8 @@
+
+
+  $(document).ready(function () {
+    
+
 $(document).on('click', "#edit-road-item", function() {
 
 
@@ -35,3 +40,4 @@ $(document).on('click', "#edit-road-item", function() {
     $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
     $("#edit-form").trigger("reset");
   });
+});

@@ -41,7 +41,7 @@
 
 
 
-{{-- @include('layout.form-link') --}}
+ @include('layout.form-link') 
 
     @include('layout.nav')
 
@@ -90,6 +90,7 @@
     <script src="{{asset('js/custom/counter.js')}}"></script>
     <script src="{{asset('js/custom/road.js')}}"></script>
     <script src="{{asset('js/custom/schedule.js')}}"></script>
+    <script src="{{asset('js/custom/customerCart.js')}}"></script>
 
 
 

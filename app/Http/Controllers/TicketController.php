@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\bus_seat;
 use App\ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -35,7 +37,25 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $ticket = new ticket;
+        $ticket->user_id= Auth::user()->id;
+        $ticket->bus_seat_id= $request->bus_seat_id;
+        $ticket->schedule_id= $request->schedule_id;
+        $ticket->name= $request->name;
+        $ticket->phone = $request->phone;
+        $ticket ->save();
+        
+       $bus_seat= bus_seat::find( $request->bus_seat_id);
+       $bus_seat -> status_id= 2;
+       $bus_seat->save();
+ 
+      
+
+        return bus_seat::find( $request->bus_seat_id);
+
+       
+  
     }
 
     /**

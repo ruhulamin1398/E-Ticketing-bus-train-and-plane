@@ -49,8 +49,8 @@ class ScheduleController extends Controller
         $schedule = new schedule;
         $schedule->date = $request->date;
         $schedule->time =$request->time;
+        $schedule->date_time =$request->date." ".$request->time;
         $schedule->road_id = $request->road_id;
-
 
 
         $schedule->save();
@@ -61,6 +61,7 @@ class ScheduleController extends Controller
             $busSeat->schedule_id= $schedule->id;
             $busSeat->status_id= 1;
             $busSeat->seat_id= $seat->id;
+            $busSeat->seat_name= $seat->name;
             
             $busSeat->save();
 
@@ -108,6 +109,8 @@ class ScheduleController extends Controller
         $schedule =  schedule::find($request->id);
         $schedule->date = $request->date;
         $schedule->time =$request->time;
+        
+        $schedule->date_time =$request->date." ".$request->time;
         $schedule->save();
 
         
@@ -123,5 +126,11 @@ class ScheduleController extends Controller
     public function destroy(schedule $schedule)
     {
         //
+    }
+
+
+    public function seatScheduleApi(Request $request){
+
+        return schedule::find($request->id)->seats;
     }
 }
