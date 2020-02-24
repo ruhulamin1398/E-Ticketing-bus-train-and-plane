@@ -28,7 +28,7 @@
       <div id="collapseTicket" class="collapse" aria-labelledby="headingTicket" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
 
-          <a class="collapse-item" href="{{route('tickets.create')}}">New Ticket</a>
+          <a class="collapse-item" href="{{route('admin')}}">New Ticket</a>
           <a class="collapse-item" href="{{route('tickets.index')}}">View All</a> 
 
         </div>

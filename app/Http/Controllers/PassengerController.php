@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\passenger;
+use App\road;
+use App\ticket;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +18,10 @@ class PassengerController extends Controller
      */
     public function index()
     {
-        
-        $passenger = User::find(Auth::user()->id);
-        // return $passenger;
-       return view('passenger');
+        $tickets = ticket::where('user_id',Auth::user()->id)->get();
+
+    
+       return view('passengerDeshboard',compact('tickets'));
     }
 
     /**

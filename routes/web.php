@@ -49,3 +49,4 @@ Route::post('status-update', 'StatusController@statusUpdate')->name("status-upda
 Route::get('road-schedule-api', 'RoadController@roadScheduleApi')->name('road-schedule-api');
 Route::get('seat-schedule-api', 'ScheduleController@seatScheduleApi')->name('seat-schedule-api');
 Route::get('road-view-api', 'RoadController@roadViewApi')->name('road-view-api');
+Route::get('schedule-passenger-api', 'ScheduleController@schedulePassengerApi')->name('schedule-passenger-api');

@@ -133,4 +133,15 @@ class ScheduleController extends Controller
 
         return schedule::find($request->id)->seats;
     }
+    public function schedulePassengerApi(Request $request){
+       $tickets= schedule::find($request->id)->tickets;
+       foreach( $tickets as $ticket){
+
+        $ticket->bus_seat_id= $ticket->bus_seat->seat_name;
+
+       }
+
+        return $tickets;
+
+    }
 }

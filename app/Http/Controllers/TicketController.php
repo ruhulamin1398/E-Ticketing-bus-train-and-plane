@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\bus_seat;
+use App\road;
+use App\schedule;
 use App\ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +18,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $roads= road::all();
+        $schedules= schedule::all();
+        return view('scheduleTickets',compact('schedules','roads'));
     }
 
     /**

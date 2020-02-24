@@ -91,6 +91,7 @@
     <script src="{{asset('js/custom/road.js')}}"></script>
     <script src="{{asset('js/custom/schedule.js')}}"></script>
     <script src="{{asset('js/custom/ticketCart.js')}}"></script>
+    <script src="{{asset('js/custom/scheduleTickets.js')}}"></script>
 
 
 

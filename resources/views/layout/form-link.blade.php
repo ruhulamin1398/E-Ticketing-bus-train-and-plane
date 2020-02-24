@@ -1,6 +1,7 @@
 <input type="text" id="road-schedule-api" size="10" value="{{route('road-schedule-api')}} " class="form-control  mb-2" hidden>
 <input type="text" id="seat-schedule-api" size="10" value="{{route('seat-schedule-api')}} " class="form-control  mb-2" hidden>
 <input type="text" id="road-view-api" size="10" value="{{route('road-view-api')}} " class="form-control  mb-2" hidden>
+<input type="text" id="schedule-passenger-api" size="10" value="{{route('schedule-passenger-api')}} " class="form-control  mb-2" hidden>
 
 
 
