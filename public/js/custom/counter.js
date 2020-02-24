@@ -3,8 +3,6 @@
 
   $(document).ready(function () {
     
-
-
 $(document).on('click', "#edit-item", function() {
 
 

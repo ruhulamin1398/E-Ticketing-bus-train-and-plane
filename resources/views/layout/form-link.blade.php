@@ -10,10 +10,10 @@
 <form action="{{route('tickets.store')}}" method="post" id="ticketSubmitForm">
 
     @csrf
-    <input type="number" name="bus_seat_id" id="cart_bus_seat_id">
-    <input type="number" name="schedule_id" id="cart_schedule_id">
+    <input type="number" name="bus_seat_id" id="cart_bus_seat_id"  hidden  >
+    <input type="number" name="schedule_id" id="cart_schedule_id"  hidden  >
 
-    <input type="text" name="name" id="name">
-    <input type="text" name="phone" id="phone">
+    <input type="text" value=" @if(!Auth::guest()){{Auth::user()->name}} @endif " name="name" id="ticketCartPassengerNameInput"  hidden  >
+    <input type="text"  value=" @if(!Auth::guest()) {{Auth::user()->phone}} @endif "  name="phone" id="ticketCartPassengerPhoneInput"  hidden  >
 
 </form>

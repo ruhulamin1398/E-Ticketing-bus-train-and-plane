@@ -13,7 +13,7 @@
   <li class="nav-item  ">
             <a class="nav-link p-3 " href="{{route('admin')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span class="text-light" >Dashboard</span></a>
         </li>
 
     <hr class="sidebar-divider m-1 p-0 ">

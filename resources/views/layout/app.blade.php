@@ -28,7 +28,7 @@
     <style type="text/css">
     .bg-abasas-dark{
    
-        background-color:#2a3f5c;
+        background-color:#000;
         color: #fff;
 
     }
@@ -90,7 +90,7 @@
     <script src="{{asset('js/custom/counter.js')}}"></script>
     <script src="{{asset('js/custom/road.js')}}"></script>
     <script src="{{asset('js/custom/schedule.js')}}"></script>
-    <script src="{{asset('js/custom/customerCart.js')}}"></script>
+    <script src="{{asset('js/custom/ticketCart.js')}}"></script>
 
 
 

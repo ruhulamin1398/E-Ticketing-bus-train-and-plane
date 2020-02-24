@@ -9,8 +9,6 @@
 
 
 
-
-
 <!-- Content Row -->
 <div class="container-fluid ">
 
@@ -18,8 +16,46 @@
 
         <!-- main body start -->
         <div class="col-xl-6 col-lg-6 col-md-6   ">
+            @if(!Auth::guest())
+            @if(Auth::user()->role_id==1)
+
+            <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
+                <div class="card border-none   bg-abasas-dark  h-100 p-2 ">
+
+                    <h3 class="text-white"> Passenger information</h3>
+
+                    <div class="card-body ">
+
+                        <form>
+                            @csrf
+                            <div class="form-row align-items-center">
+                                <div class="col-auto">
+                                    <span class=" pl-2"> Name</span>
+                                    <input type="text" class="form-control mb-2" id="ticketCartPassengerName" required>
+                                </div>
+                                <div class="col-auto">
+
+                                    <span class=" pl-2">phone</span>
+                                    <input type="text" class="form-control mb-2" id="ticketCartPassengerPhone" required>
+                                </div>
 
 
+
+                            </div>
+
+                        </form>
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+            @endif
+            @endif
 
 
             <div class=" mb-4  text-center   p-2 ">
@@ -157,6 +193,27 @@
 
 
 
+
+
+
+<!-- Create new product -->
+<div class=" modal fade" id="create-ticket-reload-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="edit-modal-label "> Ticket Buy Completed</h5>
+                    </button>
+                  </div>
+                  <div class="modal-body" id="attachment-body-content">
+
+
+                    <button class="btn btn-success text-white"> <a href="{{route('index')}}" >  Reload </a> </button>
+
+                  </div>
+
+                </div>
+              </div>
+          </div>
 
 
 

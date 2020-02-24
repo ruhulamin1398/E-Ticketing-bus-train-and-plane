@@ -75,6 +75,7 @@
                     </tfoot>
                     <tbody>
 
+                    
                         <?php $i = 1; ?>
                         @foreach ($counters as $counter)
                         <?php $id = $counter->id; ?>

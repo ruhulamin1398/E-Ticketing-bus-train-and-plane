@@ -3,6 +3,7 @@
 
 $(document).ready(function () {
 
+
   var cartArray = {};
   var ticketCost = 0;;
 
@@ -41,6 +42,21 @@ $(document).ready(function () {
 
 
   }
+
+
+
+
+  $("#ticketCartPassengerName").change(function () {
+
+    $("#ticketCartPassengerNameInput").val($("#ticketCartPassengerName").val());
+
+  });
+
+  $("#ticketCartPassengerPhone").change(function () {
+
+    $("#ticketCartPassengerPhoneInput").val($("#ticketCartPassengerPhone").val());
+
+  });
 
 
 
@@ -224,16 +240,19 @@ $(document).ready(function () {
         url: act,
         data: OPfrm.serialize(),
         success: function (successData) {
-         console.log(successData);
+          console.log(successData);
         },
         error: function (data) {
-       console.log("can not add ticket ");
-       console.log(data);
+          console.log("can not add ticket ");
+          console.log(data);
         },
       });
 
 
     });
+
+
+    $("#create-ticket-reload-modal").modal();
   });
 
 
