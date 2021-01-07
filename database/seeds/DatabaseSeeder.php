@@ -19,13 +19,9 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([
             [
-                'role' => 'admin',
-                'description' => 'Admin'
+                'role' => 'SuperAdmin',
+                'description' => 'SuperAdmin'
             ],   
-              [
-                'role' => 'counter',
-                'description' => 'counter'
-            ],
             [
                 'role' => 'passenger',
                 'description' => 'passenger'
