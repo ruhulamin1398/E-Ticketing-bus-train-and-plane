@@ -27,9 +27,9 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <style type="text/css">
     .bg-abasas-dark{
-   
-        background-color:#000;
+        background-color:#2a3f5c;
         color: #fff;
+
 
     }
 </style>

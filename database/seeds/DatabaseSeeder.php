@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([
             [
+                'role' => 'admin',
+                'description' => 'Admin'
+            ],   
+              [
                 'role' => 'counter',
                 'description' => 'counter'
             ],
@@ -32,27 +36,44 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('users')->insert([
+
+
             [
-                'name' => 'sourov',
+                'name' => 'admin',
                 'role_id' => 1,
-                'email' => 'sourov@gmail.com',
-                'phone' => '01840000408',
+                'email' => 'admin@abasas.tech',
+                'phone' => '01840000451',
                 'password' => Hash::make(1234)
             ],
 
             [
+                'name' => 'Counter',
+                'role_id' => 2,
+                'email' => 'counter@abasas.tech',
+                'phone' => '01840070408',
+                'password' => Hash::make(1234)
+            ],
+       
+            [
                 'name' => 'passenger',
-                'role_id' => 1,
-                'email' => 'passenger@gmail.com',
-                'phone' => '01840000401',
+                'role_id' => 3,
+                'email' => 'passenger@abasas.tech',
+                'phone' => '01840400401',
                 'password' => Hash::make(1234)
             ],
             [
                 'name' => 'ruhul',
-                'role_id' => 1,
+                'role_id' => 3,
                 'email' => 'ruhul.ok@gmail.com',
                 'phone' => '01840000405',
                 'password' => Hash::make(1116430725)
+            ],
+            [
+                'name' => 'sourov',
+                'role_id' => 3,
+                'email' => 'sourov@gmail.com',
+                'phone' => '01840000408',
+                'password' => Hash::make(1234)
             ],
 
         ]);
