@@ -19,21 +19,21 @@ class SettingController extends Controller
         
 $a = '[{
     "componentDetails":{
-        "title":"Company List",
-        "editTitle":"Edit Company"
+        "title":"Destination List",
+        "editTitle":"Edit Destination"
     },
     "routes":{
         "create":{
-            "name":"superAdmin.companies.store",
-            "link":"super-admin/companies"
+            "name":"superAdmin.destinations.store",
+            "link":"super-admin/destinations"
         },
         "update":{
-            "name":"superAdmin.companies.update",
-            "link":"super-admin/companies"
+            "name":"superAdmin.destinations.update",
+            "link":"super-admin/destinations"
         },
         "delete":{
-            "name":"superAdmin.companies.destroy",
-            "link":"super-admin/companies"
+            "name":"superAdmin.destinations.destroy",
+            "link":"super-admin/destinations"
         }
     },
     "fieldList":[{
@@ -49,21 +49,6 @@ $a = '[{
             "input_type" : "text",
             "database_name":"name",  
             "title":"Name"
-        },
-        {
-            
-            "position":3,
-
-            "create":"2",
-            "read":"1",
-            "update":"2",
-            "require":"1",
-
-           "input_type":"dropDown",
-           "name":"company_type",
-           "database_name":"company_type_id",
-           "title": "Company Type",
-           "data" : "company_types"
         },{
             
             "position":111,
@@ -85,9 +70,9 @@ $a = '[{
 
 
         
-        // $setting = setting::find(1);
+        // $setting =new setting;
         // $setting->setting = json_encode( $a);
-        // $setting->table_name = 'companies';
+        // $setting->table_name = 'destinations';
         // $setting->save();
         // return  "Success";
     
