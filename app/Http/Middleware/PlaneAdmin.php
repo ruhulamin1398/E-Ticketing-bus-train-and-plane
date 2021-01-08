@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class PlaneAdmin
 {
@@ -15,6 +16,11 @@ class PlaneAdmin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::User()->isPlaneAdmin()){
+            return $next($request);
+        }else{
+
+            return "You Are not Allowed";
+        }
     }
 }

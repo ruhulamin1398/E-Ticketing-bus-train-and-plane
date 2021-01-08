@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class BusCounter
 {
@@ -15,6 +16,12 @@ class BusCounter
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+       
+        if(Auth::User()->isBusCounter()){
+            return $next($request);
+        }else{
+
+            return "You Are not Allowed";
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class PlaneCounter
 {
@@ -15,6 +16,11 @@ class PlaneCounter
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::User()->isPlaneCounter()){
+            return $next($request);
+        }else{
+
+            return "You Are not Allowed";
+        }
     }
 }

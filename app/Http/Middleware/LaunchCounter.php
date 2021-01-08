@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class LaunchCounter
 {
@@ -15,6 +16,11 @@ class LaunchCounter
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::User()->isLaunchCounter()){
+            return $next($request);
+        }else{
+
+            return "You Are not Allowed";
+        }
     }
 }
