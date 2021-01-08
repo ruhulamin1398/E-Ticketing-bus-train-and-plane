@@ -18,3 +18,4 @@ Route::get('/', function () {
 }); 
 
 Route::resource('/buses','BusController');
+Route::resource('/bus-counters','BusCounterController');
