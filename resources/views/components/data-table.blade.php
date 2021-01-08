@@ -21,7 +21,7 @@
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>{{ __('translate.'.$error) }}</li>
             @endforeach
         </ul>
     </div>
@@ -32,7 +32,7 @@
     @if(is_array(session('success')))
         <ul>
             @foreach (session('success') as $message)
-                <li>{{ $message }}</li>
+                <li>{{  __('translate.'.$message) }}</li>
             @endforeach
         </ul>
     @else
@@ -47,7 +47,7 @@
 
         <div class="card-header py-3  bg-abasas-dark ">
             <nav class="navbar navbar-dark">
-                <a class="navbar-brand text-light"> Add new  </a>
+                <a class="navbar-brand text-light"> {{ __('translate.Add new')  }}</a>
             </nav>
         </div>
         <div class="card-body">
@@ -68,7 +68,7 @@
 
                 </div>
                 <div class="col-12">
-                        <button type="submit" class="btn bg-abasas-dark mt-3">Submit</button>
+                        <button type="submit" class="btn bg-abasas-dark mt-3">{{ __('translate.Submit')  }}</button>
                     </div>
 
             </form>
@@ -86,8 +86,7 @@
     <div class="card-header py-3 bg-abasas-dark">
         <nav class="navbar  ">
 
-            <div class="navbar-brand"><span id="componentDetailsTitle"> {{ $componentDetails['title']  }}</span> <i class="fas fa-tools pl-2"
-                id="pageSetting"></i></div>
+            <div class="navbar-brand"><span id="componentDetailsTitle"> {{ __('translate.'.$componentDetails['title'])  }}</span> </div>
 <div id="AddNewFormButtonDiv"><button type="button" class="btn btn-success btn-lg" id="AddNewFormButton" data-toggle="collapse"
     data-target="#createNewForm" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-plus"
         id="PlusButton"></i></button></div> 
@@ -109,12 +108,12 @@
 
                     @if($field['read']==1)
                   
-                    <th> {{ $field['title']  }}</th>
+                    <th> {{ __('translate.'.$field['title'])  }}</th>
 
                     @endif 
                     @endforeach 
 
-                    <th>Action</th>
+                    <th>{{__('translate.Action')}}</th>
 
                 </tr>
             </thead>
@@ -127,12 +126,12 @@
 
                     @if($field['read']==1)
 
-                    <th> {{ $field['title'] }}</th>
+                    <th> {{ __('translate.'.$field['title'])  }}</th>
 
                     @endif 
                     @endforeach 
 
-                    <th>Action</th>
+                    <th>{{__('translate.Action')}}</th>
 
                 </tr>
 
@@ -199,6 +198,7 @@
                             </i>
                         </button>
 
+                       
 
 
 
@@ -230,7 +230,7 @@
         <div class="modal-content">
             <div class="modal-header bg-abasas-dark">
                 <h5 class="modal-title " id="edit-modal-label ">
-                    {{$componentDetails['editTitle']}} </h5>
+                    {{ __('translate.'.$componentDetails['editTitle'])}} </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span>
                 </button>
@@ -240,7 +240,7 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                        <label class="col-form-label" for="modal-update-hidden-id">Id</label>
+                        <label class="col-form-label" for="modal-update-hidden-id">{{__('translate.Id')}} </label>
                         <input type="text" name="id" class="form-control" id="modal-update-hidden-id" required readonly>
                     </div>
 
@@ -252,7 +252,7 @@
 
                     <div class="form-group">
 
-                        <input type="submit" id="submit-button" value="Submit"
+                        <input type="submit" id="submit-button" value=" {{__('translate.Submit')}}"
                             class="form-control btn btn-success">
                     </div>
 
@@ -275,7 +275,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-abasas-dark">
-                <h5 class="modal-title " id="setting-modal-label "> {{ $componentDetails['title']  }}  </h5>
+                <h5 class="modal-title " id="setting-modal-label "> {{ __('translate.'.$componentDetails['title'])  }}  </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true" class="text-light"   >&times;</span>
                 </button>
@@ -292,7 +292,7 @@
             
                  
                 <tr data-position="{{ $fieldList[$i]['position'] }}" data-name="{{ $fieldList[$i]['name'] }}" >
-                    <th scope="row"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>  {{  $fieldList[$i]['title']   }}</th>
+                    <th scope="row"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>  {{ __('translate.'. $fieldList[$i]['title'] )  }}</th>
                     <td>
                     <div class="form-check-inline">
                 <label class="form-check-label createLabel">  
@@ -308,7 +308,7 @@
                   
                   <input type="checkbox" class="form-check-input create" disabled value="3" > 
                   @endif
-                    Create </label>
+                    {{ __('translate.Create')  }} </label>
               </div>
               <div class="form-check-inline">
                 <label class="form-check-label readLabel">
@@ -324,7 +324,7 @@
   
                     <input type="checkbox" class="form-check-input read" disabled value="3" > 
                   @endif
-                    Read
+                     {{ __('translate.Read')  }}
                 </label>
               </div>
               <div class="form-check-inline">
@@ -338,7 +338,7 @@
                     @else 
                     <input type="checkbox" class="form-check-input update" disabled value="3" > 
                      @endif
-                Update
+{{ __('translate.Update')  }}
                 </label>
               </div>
     
@@ -359,7 +359,7 @@
             </div>
 
     <div class="modal-footer">
-        <div class="btn bg-abasas-dark" id="settingsSaveButton">Save</div>
+        <div class="btn bg-abasas-dark" id="settingsSaveButton"> {{ __('translate.Save')  }}</div>
     </div>
 
         </div>
@@ -445,7 +445,7 @@
                     html = "";
 
                     html += '<div class="form-group">';
-                    html += '<label class="col-form-label" >  {{$field["title"]  }} '+@if($require == 1)'<span style="color: red"> *</span> '@else "" @endif +'  </label>';
+                    html += '<label class="col-form-label" >  {{ __("translate.".$field["title"]  )}} '+@if($require == 1)'<span style="color: red"> *</span> '@else "" @endif +'  </label>';
                     html += '<select class="form-control form-control" name="' + databaseName +
                         '"  required >';
 
@@ -480,7 +480,7 @@
 
                     html = "";
                     html += '<div class="form-group">';
-                    html += '<label class="col-form-label" >   {{$field["title"]  }} '+@if($require == 1)'<span style="color: red"> *</span>'@else "" @endif +'   </label>';
+                    html += '<label class="col-form-label" >   {{ __("translate.".$field["title"] ) }} '+@if($require == 1)'<span style="color: red"> *</span>'@else "" @endif +'   </label>';
                   
                     html += '<input type="'+ inputType+'" '+@if($field["input_type"]=="number")' step="any" '@else "" @endif +' name="' + database_name + '" value="' + value +
                         '" class="form-control" '+@if($require == 1) 'required' @endif +'>';
@@ -570,7 +570,7 @@ $("#settingsSaveButton").on('click',function(){
 
 });
 function saveSettings(positionArray){
-    var url = $("#homeRoute").val().trim()+"/setting/"+"{{ $settings->id }}";
+    var url = $("#homeRoute").val().trim()+"/settings/"+"{{ $settings->id }}";
     // console.log(url);
                 $.ajax({
                         url: url,
@@ -625,8 +625,8 @@ function insertInputFormData(){
 
                     html = "";
 
-                    html += '<div class="form-group col-sm-12 col-md-4   p-4">';
-                    html += '<label class="col-form-label" >  {{ $field["title"]  }} '+@if($require == 1)'<span style="color: red"> *</span>'@else "" @endif +'  </label>';
+                    html += '<div class="form-group col-md-4 col-sm-12  p-4">';
+                    html += '<label class="col-form-label" >  {{ __("translate.".$field["title"] ) }} '+@if($require == 1)'<span style="color: red"> *</span>'@else "" @endif +'  </label>';
                     html += '<select class="form-control form-control" name="' + databaseName +
                         '"  required > <option disabled selected value> -- select an option -- </option>';
 
@@ -662,8 +662,8 @@ function insertInputFormData(){
 // // </div>
 
                     html = "";
-                    html += '<div class="col-sm-12 col-md-4   p-4">';
-                    html += '<label class="text-dark pl-4"> {{ $field["title"] }} '+@if($require == 1)'<span style="color: red"> *</span>'@else "" @endif +'   </label>';
+                    html += '<div class="col-md-4 col-sm-12  p-4">';
+                    html += '<label class="text-dark pl-4"> {{ __("translate.".$field["title"])  }} '+@if($require == 1)'<span style="color: red"> *</span>'@else "" @endif +'   </label>';
                   
                     html += '<input type="'+ inputType+'"  '+@if($field["input_type"]=="number")' step="any" '@else "" @endif +'  name="' + database_name + '" class="form-control" '+@if($require == 1) 'required' @endif +'>';
                     html += '</div>';

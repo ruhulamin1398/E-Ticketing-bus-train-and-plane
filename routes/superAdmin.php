@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('superAdmin.index');
 }); 
+
+
+Route::resource('/companies','CompanyController');
