@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route::resource('/buses','BusController');
 Route::resource('/bus-counters','BusCounterController');
+
+
+Route::resource('/bus-schedules','BusScheduleController');
