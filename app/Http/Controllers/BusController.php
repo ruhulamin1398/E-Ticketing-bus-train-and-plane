@@ -22,7 +22,7 @@ class BusController extends Controller
         $dataArray=[
             'settings'=>$settings,
             'items' => bus::all(),
-            'companies' => company::all(),
+            'Companies' => company::all(),
         ];
 
         return view('bus.admin.bus.index', compact('dataArray'));

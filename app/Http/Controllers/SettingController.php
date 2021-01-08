@@ -16,63 +16,77 @@ class SettingController extends Controller
     {
 
         
-        
+  
 $a = '[{
     "componentDetails":{
-        "title":"Destination List",
-        "editTitle":"Edit Destination"
+        "title":"Counter List",
+        "editTitle":"Edit Counter"
     },
     "routes":{
         "create":{
-            "name":"superAdmin.destinations.store",
-            "link":"super-admin/destinations"
+            "name":"bus.bus-counters.store",
+            "link":"bus/bus-counters"
         },
         "update":{
-            "name":"superAdmin.destinations.update",
-            "link":"super-admin/destinations"
+            "name":"bus.bus-counters.update",
+            "link":"bus/bus-counters"
         },
         "delete":{
-            "name":"superAdmin.destinations.destroy",
-            "link":"super-admin/destinations"
+            "name":"bus.bus-counters.destroy",
+            "link":"bus/bus-counters"
         }
     },
     "fieldList":[{
-        
-            "position":11,
-
-            "create":"2",
-            "read":"1",
-            "update":"2",
-            "require":"1",
-
-            "name":"name",
-            "input_type" : "text",
-            "database_name":"name",  
-            "title":"Name"
-        },{
             
             "position":111,
 
-            "create":"2",
+            "create":"1",
             "read":"1",
-            "update":"2",
-            "require":"0",
+            "update":"1",
+            "require":"1",
 
            "input_type":"text",
-           "name":"description",
-           "title":"Description",
+           "name":"name",
+           "title":"Name",
 
 
-           "database_name":"description"
+           "database_name":"name"
+        },{
+            
+            "position":112,
+
+            "create":"1",
+            "read":"1",
+            "update":"1",
+            "require":"1",
+
+           "input_type":"dropDown",
+           "name":"company",
+           "database_name":"company_id",
+           "title": "Company",
+           "data" : "Companies"
+        },{
+            
+            "position":115,
+
+            "create":"1",
+            "read":"1",
+            "update":"1",
+            "require":"1",
+
+           "input_type":"dropDown",
+           "name":"destination",
+           "database_name":"destination_id",
+           "title": "Destnation",
+           "data" : "destination"
         }
     ]
 }]' ;
 
-
         
-        // $setting =new setting;
+        // $setting = setting::find(4);
         // $setting->setting = json_encode( $a);
-        // $setting->table_name = 'destinations';
+        // $setting->table_name = 'bus_counters';
         // $setting->save();
         // return  "Success";
     
