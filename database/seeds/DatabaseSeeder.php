@@ -199,10 +199,93 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'I4'
             ],
+            [
+                'name' => 'J1'
+            ],
+            [
+                'name' => 'J2'
+            ],
+            [
+                'name' => 'J3'
+            ],
+            [
+                'name' => 'J4'
+            ],
+            [
+                'name' => 'K1'
+            ],
+            [
+                'name' => 'K2'
+            ],
+            [
+                'name' => 'K3'
+            ],
+            [
+                'name' => 'K4'
+            ],
+            [
+                'name' => 'L1'
+            ],
+            [
+                'name' => 'L2'
+            ],
+            [
+                'name' => 'L3'
+            ],
+            [
+                'name' => 'L4'
+            ],
     
     
         ]);
-    
+
+
+
+        DB::table('companies')->insert([
+
+            [
+              'name'=> 'Ena',
+              'description' => 'Ena Description',
+              'company_type_id' => 1,
+            ],
+            [
+              'name'=> 'hanif',
+              'description' => 'hanif Description',
+              'company_type_id' => 1,
+            ]
+        ]);
+        
+        DB::table('destinations')->insert([
+
+            [
+              'name'=> 'habiganj',
+              'description' => 'habiganj bus Stand'
+            ],
+            [
+                'name'=> 'Dhaka',
+                'description' => 'Dhaka bus Stand'
+            ],
+        ]);
+
+        DB::table('buses')->insert([
+
+            [
+              'name'=> '4400 ph',
+              'total_seat' => '40',
+              'company_id' => 1
+            ],
+            [
+                'name'=> '3400 ph',
+                'total_seat' => '40',
+                'company_id' => 1
+            ],
+              [
+                'name'=> '2400 ph',
+                'total_seat' => '40',
+                'company_id' => 1
+              ],
+        ]);
+
     }
 
 
