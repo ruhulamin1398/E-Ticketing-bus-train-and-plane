@@ -56,6 +56,27 @@ class DatabaseSeeder extends Seeder
             ],
             
         ]);
+
+
+        DB::table('company_types')->insert([
+
+              [
+                'name'=> 'Bus',
+                'description' => 'Bus Description'
+              ],
+              [
+                'name'=> 'Train',
+                'description' => 'Train Description'
+              ],
+              [
+                'name'=> 'launch',
+                'description' => 'launch Description'
+              ],
+              [
+                'name'=> 'plane',
+                'description' => 'plane Description'
+              ],
+        ]);
     }
 
 
