@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class BusAdmin
 {
@@ -15,6 +17,17 @@ class BusAdmin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+    
+
+        if(Auth::User()->isBusAdmin()){
+            return $next($request);
+        }else{
+
+            return "You Are not Allowed";
+        }
+
+
+
+        
     }
 }
