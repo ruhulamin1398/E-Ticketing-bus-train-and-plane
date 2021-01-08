@@ -19,76 +19,135 @@ class SettingController extends Controller
   
 $a = '[{
     "componentDetails":{
-        "title":"User List",
-        "editTitle":"Edit User"
+        "title":"Bus schedule List",
+        "editTitle":"Edit Bus schedule"
     },
     "routes":{
         "create":{
-            "name":"bus.bus-counters.store",
-            "link":"bus/bus-counters"
+            "name":"bus.bus-schedules.store",
+            "link":"bus/bus-schedules"
         },
         "update":{
-            "name":"bus.bus-counters.update",
-            "link":"bus/bus-counters"
+            "name":"bus.bus-schedules.update",
+            "link":"bus/bus-schedules"
         },
         "delete":{
-            "name":"bus.bus-counters.destroy",
-            "link":"bus/bus-counters"
+            "name":"bus.bus-schedules.destroy",
+            "link":"bus/bus-schedules"
         }
     },
     "fieldList":[{
             
-            "position":111,
+        "position":112,
 
-            "create":"1",
-            "read":"1",
-            "update":"1",
-            "require":"1",
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
 
-           "input_type":"text",
-           "name":"name",
-           "title":"Name",
-
-
-           "database_name":"name"
-        },{
+       "input_type":"dropDown",
+       "name":"bus",
+       "database_name":"bus_id",
+       "title": "Bus",
+       "data" : "buses"
+    },{
             
-            "position":112,
+        "position":112,
 
-            "create":"1",
-            "read":"1",
-            "update":"1",
-            "require":"1",
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
 
-           "input_type":"dropDown",
-           "name":"company",
-           "database_name":"company_id",
-           "title": "Company",
-           "data" : "Companies"
-        },{
+       "input_type":"dropDown",
+       "name":"to_destination",
+       "database_name":"to_destination_id",
+       "title": "To",
+       "data" : "to_destinations"
+    },{
             
-            "position":115,
+        "position":112,
 
-            "create":"1",
-            "read":"1",
-            "update":"1",
-            "require":"1",
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
 
-           "input_type":"dropDown",
-           "name":"destination",
-           "database_name":"destination_id",
-           "title": "Destnation",
-           "data" : "destination"
-        }
+       "input_type":"dropDown",
+       "name":"company",
+       "database_name":"company_id",
+       "title": "Company",
+       "data" : "companies"
+    },{
+            
+        "position":111,
+
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
+
+       "input_type":"number",
+       "name":"distance",
+       "title":"Distance (k.m.)",
+
+
+       "database_name":"distance"
+    },{
+            
+        "position":111,
+
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
+
+       "input_type":"number",
+       "name":"time",
+       "title":"Time (h.m)",
+
+
+       "database_name":"time"
+    },{
+            
+        "position":111,
+
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
+
+       "input_type":"number",
+       "name":"cost",
+       "title":"Cost",
+
+
+       "database_name":"cost"
+    },{
+            
+        "position":111,
+
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
+
+       "input_type":"datetime-local",
+       "name":"schedule",
+       "title":"Schedule",
+
+
+       "database_name":"schedule"
+    }
     ]
 }]' ;
 
         
-        // $setting = setting::find(4);
-        // $setting->setting = json_encode( $a);
-        // $setting->table_name = 'bus_counters';
-        // $setting->save();
-        // return  "Success";
+        $setting = new setting;
+        $setting->setting = json_encode( $a);
+        $setting->table_name = 'bus_schedules';
+        $setting->save();
+        return  "Success";
     
     }
 

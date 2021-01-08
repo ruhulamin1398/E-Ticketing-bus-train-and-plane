@@ -94,7 +94,7 @@
             <div id="wrapper">
         
         
-                @include('superAdmin.includes.sidebar')
+                @include('bus.counter.includes.sidebar')
            
         
             
@@ -106,7 +106,7 @@
                     <div id="content">
         
                         
-                        @include('superAdmin.includes.nav')
+                        @include('bus.counter.includes.nav')
         
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
