@@ -156,6 +156,15 @@ class User extends Authenticatable
         }
     }
 
+    
+    public function companies(){
+        return $this->belongsTo('App\company','company_id','id');
+    }
+    public function roles(){
+        return $this->belongsTo('App\role','role_id','id');
+    }
+ 
+
 
 
 

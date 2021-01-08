@@ -19,8 +19,8 @@ class SettingController extends Controller
   
 $a = '[{
     "componentDetails":{
-        "title":"Counter List",
-        "editTitle":"Edit Counter"
+        "title":"User List",
+        "editTitle":"Edit User"
     },
     "routes":{
         "create":{
