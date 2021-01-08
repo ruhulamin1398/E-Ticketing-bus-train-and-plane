@@ -38,6 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+        //    Super Admin
 
     public function isSuperAdmin()
     {
@@ -49,7 +50,7 @@ class User extends Authenticatable
     }
 
 
-
+        //    Bus
     public function isBusAdmin()
     {
         if (Auth::user()->role_id == 2) {
@@ -70,4 +71,92 @@ class User extends Authenticatable
             return false;
         }
     }
+
+
+        //   Train
+    public function isTrainAdmin()
+    {
+        if (Auth::user()->role_id == 4) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+    public function isTrainCounter()
+    {
+        if (Auth::user()->role_id == 5) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+    //    Launch
+
+    public function isLaunchAdmin()
+    {
+        if (Auth::user()->role_id == 6) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+    public function isLaunchCounter()
+    {
+        if (Auth::user()->role_id == 7) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+
+
+    //   Plane
+
+    public function isPlaneAdmin()
+    {
+        if (Auth::user()->role_id == 8) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+    public function isPlaneCounter()
+    {
+        if (Auth::user()->role_id == 9) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+    public function isPassenger()
+    {
+        if (Auth::user()->role_id == 10) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+
+
+
 }
