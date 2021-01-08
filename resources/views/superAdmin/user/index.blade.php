@@ -74,6 +74,15 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group col-sm-12 col-md-4   pl-4 pr-4" id="counterDiv" required>
+                        <label for="counter_id"> Counter</label>
+                        <select class="form-control " name="counter_id" id="AddTaskUserId" >
+                            <option disabled selected value> -- select a Counter -- </option>
+                            @foreach ($destinations as $destination)
+                            <option value="{{$destination->id}}">  {{$destination->name}} </option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="form-group col-sm-12 col-md-4   pl-4 pr-4">
                         <span class="text-dark">Email</span>
@@ -115,9 +124,10 @@
 
                         <tr>
                             <th>User id</th>
+                            <th>Name</th>
                             <th>Company</th>
                             <th>User Role </th>
-                            <th>Name</th>
+                            <th>Counter </th>
                             <th> Email</th>
                             <th> Action</th>
                         </tr>
@@ -125,9 +135,10 @@
                     <tfoot class="bg-abasas-dark">
                         <tr>
                             <th>User id</th>
+                            <th>Name</th>
                             <th>Company</th>
                             <th>User Role </th>
-                            <th>Name</th>
+                            <th>Counter </th>
                             <th> Email</th>
                             <th> Action</th>
                         </tr>
@@ -140,9 +151,10 @@
                         <tr class="data-row">
 
                             <td id="viewName">{{$user->id}}</td>
+                            <td id="viewName">{{$user->name}}</td>
                             <td id="viewName">{{$user->companies->name}}</td>
                             <td id="viewName">{{$user->roles->role}}</td>
-                            <td id="viewName">{{$user->name}}</td>
+                            <td id="viewName">{{$user->counters->name}}</td>
                             <td id="viewSell">{{$user->email}}</td>
 
 
@@ -275,6 +287,7 @@
                     ]
                 });
 
+       
         
 
     });
