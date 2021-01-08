@@ -1,0 +1,1 @@
+@extends('bus.admin.includes.app')
