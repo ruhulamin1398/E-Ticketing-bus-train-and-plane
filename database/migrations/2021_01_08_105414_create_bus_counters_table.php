@@ -15,6 +15,9 @@ class CreateBusCountersTable extends Migration
     {
         Schema::create('bus_counters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('destination_id');
             $table->timestamps();
         });
     }
