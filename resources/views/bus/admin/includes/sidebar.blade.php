@@ -8,19 +8,19 @@
      <li class="nav-item  ">
         <a class="nav-link p-3 " href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Companies`</span></a>
+            <span>Bus 1</span></a>
     </li> 
 
     <li class="nav-item  ">
         <a class="nav-link p-3 " href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Users</span></a>
+            <span>Bus 2</span></a>
     </li>      
     
     <li class="nav-item  ">
         <a class="nav-link p-3 " href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Destinations</span></a>
+            <span>Bus 3</span></a>
     </li>  
     
   
