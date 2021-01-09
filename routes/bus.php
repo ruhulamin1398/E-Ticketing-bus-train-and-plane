@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
  
 Route::get('/', function () {
     return view('bus.admin.includes.app');
-}); 
+})->name("busIndex"); 
 
 Route::resource('/buses','BusController');
 Route::resource('/bus-counters','BusCounterController');
@@ -25,6 +25,7 @@ Route::resource('/bus-schedules','BusScheduleController');
 
 Route::get('counter-admin', 'BusAdminCounterController@index')->name('busCounterAdmin');
 
+Route::get('bus-schedule-seat', 'BusScheduleController@busScheduleSeat')->name('bus-schedule-seat');
 //// Api routes
 
 Route::get('road-schedule-api', 'RoadController@roadScheduleApi')->name('road-schedule-api');
