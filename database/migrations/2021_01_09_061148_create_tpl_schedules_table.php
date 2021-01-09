@@ -15,6 +15,11 @@ class CreateTplSchedulesTable extends Migration
     {
         Schema::create('tpl_schedules', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tpl_id');
+            $table->unsignedBigInteger('company_type_id');
+            $table->unsignedBigInteger('counter_id');
+            $table->unsignedBigInteger('company_id');
+            $table->dateTime('schedule');
             $table->timestamps();
         });
     }

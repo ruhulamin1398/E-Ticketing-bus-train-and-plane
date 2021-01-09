@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('tpl','TplController');
+Route::resource('tpl-schedule','TplScheduleController');
 
 
 
