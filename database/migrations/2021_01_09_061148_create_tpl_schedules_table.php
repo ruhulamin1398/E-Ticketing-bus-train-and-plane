@@ -19,6 +19,7 @@ class CreateTplSchedulesTable extends Migration
             $table->unsignedBigInteger('company_type_id');
             $table->unsignedBigInteger('counter_id');
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('from_destination_id');
             $table->dateTime('schedule');
             $table->timestamps();
         });

@@ -25,7 +25,7 @@ class TplScheduleController extends Controller
         $counter = busCounter::find($counter_id);
         $destination_id = $counter->destination_id;
         $company_id = Auth::user()->company_id;
-        $schedules=  tplSchedule::where('company_id',$company_id)->get();
+        $schedules=  tplSchedule::where('company_id',$company_id)->where('from_destination_id',$destination_id)->get();
         $tpls = tpl::where('company_id',$company_id)->where('from_destination_id',$destination_id)->get();
 
 
@@ -64,10 +64,13 @@ class TplScheduleController extends Controller
 
         $schedule->counter_id = Auth::user()->counter_id;
         $schedule->company_id = Auth::user()->company_id;
+        $counter = busCounter::find($schedule->counter_id);
+        $destination_id = $counter->destination_id;
 
         $company = company::find($schedule->company_id);
         $company_type_id = $company->company_type_id;
         $schedule->company_type_id = $company_type_id;
+        $schedule->from_destination_id = $destination_id;
         $schedule->save();
 
         return redirect()->back()->withSuccess(['Successfully Created']);
