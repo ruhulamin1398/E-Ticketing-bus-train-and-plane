@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\busCounter;
 use App\company;
+use App\companyType;
 use App\destination;
 use App\role;
-use App\setting;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use SebastianBergmann\LinesOfCode\Counter;
 
 class UserController extends Controller
 {
@@ -30,11 +32,14 @@ class UserController extends Controller
         //     'roles' => role::all(),
         // ];
         $users = User::all();
+        $company_types = companyType::all();
         $companies = company::all();
         $roles = role::all();
         $destinations = destination::all();
+        $counters = busCounter::all();
 
-        return view('superAdmin.user.index', compact('users','companies','roles','destinations'));
+
+        return view('superAdmin.user.index', compact('users','companies','roles','destinations','counters','company_types'));
     }
 
     /**
@@ -59,10 +64,13 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role_id = $request->role_id;
-        $user->company_id = $request->company_id;
-        $user->counter_id = $request->counter_id;
         $user->password = Hash::make($request->password);
+        $user->company_id = $request->company_id;
+        $user->role_id = $request->role_id;
+        if(! is_null($request->counter_id)){
+
+            $user->counter_id = $request->counter_id;
+        }
         $user->save();
         return redirect()->back()->withSuccess(['Successfully Created']);
  

@@ -57,23 +57,26 @@
                         <input type="text" name="name" class="form-control " id="inlineFormInput" required>
                     </div>
                     <div class="form-group col-sm-12 col-md-4   pl-4 pr-4">
-                        <label for="company_id"> Company</label>
-                        <select class="form-control " name="company_id" id="AddTaskUserId" required>
-                            <option disabled selected value> -- select a Company -- </option>
-                            @foreach ($companies as $company)
-                            <option value="{{$company->id}}">  {{$company->name}} </option>
+                        <label for="company_type_id"> Company Type</label>
+                        <select class="form-control " name="company_type_id" id="company_type_id" required>
+                            <option disabled selected value> -- select a Company Type -- </option>
+                            @foreach ($company_types as $type)
+                            <option value="{{$type->id}}">  {{$type->name}} </option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-sm-12 col-md-4   pl-4 pr-4">
-                        <label for="role_id"> Role</label>
-                        <select class="form-control " name="role_id" id="AddTaskUserId" required>
-                            <option disabled selected value> -- select a Role -- </option>
-                            @foreach ($roles as $role)
-                            <option value="{{$role->id}}"> {{$role->id}} | {{$role->role}} </option>
-                            @endforeach
-                        </select>
+
+                    <div id="companyDiv">
+
                     </div>
+                    <div id="roleDiv">
+
+                    </div>
+                    <div id="counterDiv">
+
+                    </div>
+{{-- 
+
                     <div class="form-group col-sm-12 col-md-4   pl-4 pr-4" id="counterDiv" required>
                         <label for="counter_id"> Counter</label>
                         <select class="form-control " name="counter_id" id="AddTaskUserId" >
@@ -82,7 +85,7 @@
                             <option value="{{$destination->id}}">  {{$destination->name}} </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group col-sm-12 col-md-4   pl-4 pr-4">
                         <span class="text-dark">Email</span>
@@ -154,7 +157,9 @@
                             <td id="viewName">{{$user->name}}</td>
                             <td id="viewName">{{$user->companies->name}}</td>
                             <td id="viewName">{{$user->roles->role}}</td>
-                            <td id="viewName">{{$user->counters->name}}</td>
+                            <td id="viewName">@if ( ! is_null($user->counters))
+                                {{$user->counters->name}}
+                            @endif    </td>
                             <td id="viewSell">{{$user->email}}</td>
 
 
@@ -253,6 +258,99 @@
 <script>
     $(document).ready(function(){
         
+
+        $(document).on('input','#company_type_id',function(){
+           var company = @json($companies);
+           var company_type_id = $('#company_type_id').val();
+           console.log(company);
+           var html = ''; 
+           html += '<div class="form-group col-12">';
+           html += '<label for="company_id"> Company</label>';
+           html +=            ' <select class="form-control " name="company_id" id="company_id" required>';
+           html +=               '  <option disabled selected value> -- select a Company -- </option>';
+
+           $.each(company,function(i){
+               if(company_type_id == company[i].company_type_id){
+
+                html +=  '<option value="'+ company[i].id +'">'+ company[i].name +' </option>';
+               }
+           });
+            html +=    '</select>';
+            html +=       ' </div>';
+
+           $('#companyDiv').html(html);
+
+
+    
+            
+
+        });
+
+
+
+        $(document).on('input','#company_id',function(){
+            var company_type_id = $('#company_type_id').val();
+            var role = @json($roles);
+           var htmlrole = '';
+           htmlrole += '<div class="form-group col-12">';
+            htmlrole += '<label for="role_id"> Role</label>';
+            htmlrole +=            ' <select class="form-control " name="role_id" id="role_id" required>';
+                htmlrole +=               '  <option disabled selected value> -- select a Role -- </option>';
+
+           $.each(role,function(i){
+               if(company_type_id *2  == role[i].id || company_type_id *2+1  == role[i].id){
+
+                htmlrole +=  '<option value="'+ role[i].id +'">'+ role[i].role +' </option>';
+               }
+           });
+           htmlrole +=    '</select>';
+           htmlrole +=       ' </div>';
+
+           $('#roleDiv').html(htmlrole);
+           console.log(htmlrole);
+
+        });
+
+
+
+
+
+
+        
+         $(document).on('input','#role_id',function(){
+
+            
+
+             var role = $('#role_id').val();
+             
+             if(role % 2 == 1){
+                
+              var counters = @json($counters);
+               var company_id = $('#company_id').val();
+             
+               var html = ''; 
+                html += '<div class="form-group col-12">';
+                html += '<label for="counter_id"> Counter</label>';
+                html +=            ' <select class="form-control " name="counter_id" id="counter_id" required>';
+                html +=               '  <option disabled selected value> -- select a Counter -- </option>';
+
+                $.each(counters,function(i){
+                    if(company_id == counters[i].company_id){
+
+                        html +=  '<option value="'+ counters[i].id +'">'+ counters[i].name +' </option>';
+                    }
+                });
+                    html +=    '</select>';
+                    html +=       ' </div>';
+
+                $('#counterDiv').html(html);
+             }
+
+          });
+
+
+
+
 
 
         $(document).on('click', "#user-edit-item", function () {
