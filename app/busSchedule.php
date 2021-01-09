@@ -18,6 +18,9 @@ class busSchedule extends Model
     public function destinations(){
         return $this->belongsTo('App\destination','to_destination_id','id');
     }
+    public function fromDestinations(){
+        return $this->belongsTo('App\destination','from_destination_id','id');
+    }
 
    
 
@@ -26,6 +29,7 @@ class busSchedule extends Model
         $this->company = $this->companies->name;
         $this->bus = $this->buses->name;
         $this->to_destination = $this->destinations->name;
+        $this->from_destination = $this->fromDestinations->name;
     }  
 
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -283,6 +284,36 @@ class DatabaseSeeder extends Seeder
                 'name'=> '2400 ph',
                 'total_seat' => '40',
                 'company_id' => 1
+              ],
+        ]);
+
+
+        
+        DB::table('users')->insert([
+
+            [
+              'name'=> 'Super Admin',
+              'role_id' => 1,
+              'company_id' => 1,
+              'counter_id' => 1,
+              'email' => 'superadmin@gmail.com',
+              'password' => Hash::make('1234'),
+            ],
+            [
+                'name'=> 'Bus Admin',
+                'role_id' => 2,
+                'company_id' => 1,
+                'counter_id' => 1,
+                'email' => 'busadmin@gmail.com',
+                'password' => Hash::make('1234'),
+              ],
+              [
+                'name'=> 'Bus  Counter',
+                'role_id' => 3,
+                'company_id' => 1,
+                'counter_id' => 1,
+                'email' => 'buscounter@gmail.com',
+                'password' => Hash::make('1234'),
               ],
         ]);
 
