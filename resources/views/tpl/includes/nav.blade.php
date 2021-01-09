@@ -8,7 +8,7 @@
         </button>
 
         <!-- Topbar Search -->
-        <div class="adminTitle" >Bus Admin</div>
+        <div class="adminTitle" >Train , Plane and Launch </div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 

@@ -17,66 +17,66 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([
             [
-                'role'=> 'Super Admin'
+                'role' => 'Super Admin'
             ],
-            
+
             [
-                'role'=> 'Bus Admin'
+                'role' => 'Bus Admin'
             ],
-            
+
             [
-                'role'=> 'Bus Counter'
+                'role' => 'Bus Counter'
             ],
-            
+
             [
-                'role'=> 'Train Admin'
+                'role' => 'Train Admin'
             ],
-            
+
             [
-                'role'=> 'Train Counter'
+                'role' => 'Train Counter'
             ],
-            
+
             [
-                'role'=> 'Launch Admin'
+                'role' => 'Launch Admin'
             ],
-            
+
             [
-                'role'=> 'Launch Counter'
+                'role' => 'Launch Counter'
             ],
-            
+
             [
-                'role'=> 'Plane Admin'
+                'role' => 'Plane Admin'
             ],
-            
+
             [
-                'role'=> 'Plane Counter'
+                'role' => 'Plane Counter'
             ],
-            
+
             [
-                'role'=> 'Passenger'
+                'role' => 'Passenger'
             ],
-            
+
         ]);
 
 
         DB::table('company_types')->insert([
 
-              [
-                'name'=> 'Bus',
+            [
+                'name' => 'Bus',
                 'description' => 'Bus Description'
-              ],
-              [
-                'name'=> 'Train',
+            ],
+            [
+                'name' => 'Train',
                 'description' => 'Train Description'
-              ],
-              [
-                'name'=> 'launch',
+            ],
+            [
+                'name' => 'launch',
                 'description' => 'launch Description'
-              ],
-              [
-                'name'=> 'plane',
+            ],
+            [
+                'name' => 'plane',
                 'description' => 'plane Description'
-              ],
+            ],
         ]);
         DB::table('statuses')->insert([
             [
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Booked',
             ],
-    
+
         ]);
 
         DB::table('seats')->insert([
@@ -236,8 +236,8 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'L4'
             ],
-    
-    
+
+
         ]);
 
 
@@ -245,79 +245,156 @@ class DatabaseSeeder extends Seeder
         DB::table('companies')->insert([
 
             [
-              'name'=> 'Ena',
-              'description' => 'Ena Description',
-              'company_type_id' => 1,
+                'name' => 'Ena',
+                'description' => 'Ena Description',
+                'company_type_id' => 1,
             ],
             [
-              'name'=> 'hanif',
-              'description' => 'hanif Description',
-              'company_type_id' => 1,
+                'name' => 'hanif',
+                'description' => 'hanif Description',
+                'company_type_id' => 1,
             ]
         ]);
-        
+
         DB::table('destinations')->insert([
 
             [
-              'name'=> 'habiganj',
-              'description' => 'habiganj bus Stand'
+                'name' => 'Sylhet',
+                'description' => 'Sylhet Stand'
             ],
             [
-                'name'=> 'Dhaka',
-                'description' => 'Dhaka bus Stand'
+                'name' => 'Rangpur',
+                'description' => 'Rangpur Stand'
             ],
+            [
+                'name' => 'Rajshahi ',
+                'description' => 'Rajshahi Stand'
+            ],
+            [
+                'name' => 'Khulna ',
+                'description' => 'Khulna  Stand'
+            ],
+            [
+                'name' => 'Mymensingh',
+                'description' => 'Mymensingh Stand'
+            ],
+            [
+                'name' => 'Dhaka',
+                'description' => 'Dhaka Stand'
+            ],
+            [
+                'name' => 'Chittagong ',
+                'description' => 'Chittagong Stand'
+            ],
+            [
+                'name' => 'Barishal ',
+                'description' => 'Barishal  Stand'
+            ],
+
         ]);
 
         DB::table('buses')->insert([
 
             [
-              'name'=> '4400 ph',
-              'total_seat' => '40',
-              'company_id' => 1
+                'name' => '4400 ph',
+                'total_seat' => '40',
+                'company_id' => 1
             ],
             [
-                'name'=> '3400 ph',
+                'name' => '3400 ph',
                 'total_seat' => '40',
                 'company_id' => 1
             ],
-              [
-                'name'=> '2400 ph',
+            [
+                'name' => '2400 ph',
                 'total_seat' => '40',
                 'company_id' => 1
-              ],
+            ],
         ]);
 
 
-        
+
         DB::table('users')->insert([
 
             [
-              'name'=> 'Super Admin',
-              'role_id' => 1,
-              'company_id' => 1,
-              'counter_id' => 1,
-              'email' => 'superadmin@gmail.com',
-              'password' => Hash::make('1234'),
+                'name' => 'Super Admin',
+                'role_id' => 1,
+                'company_id' => 1,
+                'counter_id' => 1,
+                'email' => 'superadmin@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
-                'name'=> 'Bus Admin',
+                'name' => 'Bus Admin',
                 'role_id' => 2,
                 'company_id' => 1,
                 'counter_id' => 1,
                 'email' => 'busadmin@gmail.com',
                 'password' => Hash::make('1234'),
-              ],
-              [
-                'name'=> 'Bus  Counter',
+            ],
+            [
+                'name' => 'Bus  Counter',
                 'role_id' => 3,
                 'company_id' => 1,
                 'counter_id' => 1,
                 'email' => 'buscounter@gmail.com',
                 'password' => Hash::make('1234'),
-              ],
+            ],
         ]);
 
+        DB::table('bus_counters')->insert([
+
+            [
+                'name' => 'Sylhet',
+                'company_id' => 1,
+                'destination_id' => 1,
+
+            ],
+            [
+                'name' => 'Rangpur',
+                'company_id' => 1,
+                'destination_id' => 2,
+
+            ],
+            [
+                'name' => 'Rajshahi',
+                'company_id' => 1,
+                'destination_id' => 3,
+
+            ],
+            [
+                'name' => 'Khulna',
+                'company_id' => 1,
+                'destination_id' => 4,
+
+            ],
+
+
+            [
+                'name' => 'Mymensingh',
+                'company_id' => 1,
+                'destination_id' => 5,
+
+            ],
+            [
+                'name' => 'Dhaka',
+                'company_id' => 1,
+                'destination_id' => 6,
+
+            ],
+            [
+                'name' => 'Chittagong',
+                'company_id' => 1,
+                'destination_id' => 7,
+
+            ],
+            [
+                'name' => 'Barishal',
+                'company_id' => 1,
+                'destination_id' => 8,
+
+            ],
+
+        ]);
     }
-
-
 }
