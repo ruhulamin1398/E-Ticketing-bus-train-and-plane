@@ -11,6 +11,7 @@ use App\seat;
 use App\setting;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class BusScheduleController extends Controller
@@ -22,13 +23,16 @@ class BusScheduleController extends Controller
      */
     public function index()
     {
+        $company_id = Auth::user()->company_id;
         $settings = setting::where('table_name','bus_schedules')->first();
         $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
         $dataArray=[
             'settings'=>$settings,
-            'items' => busSchedule::all(),
-            'buses' => bus::all(),
-            'companies' => company::all(),
+            // 'items' => busSchedule::all(),
+            'items' => busSchedule::where('company_id',$company_id)->get(),
+            // 'buses' => bus::all(),
+            'buses' => bus::where('company_id',$company_id)->get(),
+            'companies' => company::where('company_type_id',1)->get(),
             'to_destinations' => destination::all(),
         ];
 
@@ -58,8 +62,8 @@ class BusScheduleController extends Controller
         $busSchedule = new busSchedule;
         $busSchedule->bus_id = $request->bus_id;
 
-        $busSchedule->from_destination_id = 1; // Auth ::user()->counter_id
-        $busSchedule->company_id = 1;  // Auth ::user()->company_id
+        $busSchedule->from_destination_id =  Auth ::user()->counter_id;
+        $busSchedule->company_id =  Auth ::user()->company_id;
 
         $busSchedule->to_destination_id = $request->to_destination_id;
         $busSchedule->distance = $request->distance;
