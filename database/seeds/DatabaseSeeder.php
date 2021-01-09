@@ -245,19 +245,31 @@ class DatabaseSeeder extends Seeder
         DB::table('companies')->insert([
 
             [
-                'name' => 'Ena',
+                'name' => 'Ena Company',
                 'description' => 'Ena Description',
                 'company_type_id' => 1,
             ],
             [
-                'name' => 'hanif',
+                'name' => 'hanif Company',
                 'description' => 'hanif Description',
                 'company_type_id' => 1,
             ],
             [
-                'name' => 'BD Train',
+                'name' => 'Train Company',
                 'description' => ' Description',
                 'company_type_id' => 2,
+            ],
+            
+            [
+                'name' => 'Launch Company',
+                'description' => ' Description of lauch',
+                'company_type_id' => 3,
+            ],
+            
+            [
+                'name' => 'Plane Company',
+                'description' => ' Description of train',
+                'company_type_id' => 4,
             ]
         ]);
 
@@ -348,9 +360,58 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'train  admin',
                 'role_id' => 4,
-                'company_id' => 3,
+                'company_id' => 2,
                 'counter_id' => 1,
                 'email' => 'trainadmin@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            [
+                'name' => 'train  Counter',
+                'role_id' => 5,
+                'company_id' => 3,
+                'counter_id' => 1,
+                'email' => 'traincounter@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            [
+                'name' => 'launch  Admin',
+                'role_id' => 6,
+                'company_id' => 4,
+                'counter_id' => 1,
+                'email' => 'launchadmin@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            [
+                'name' => 'launch  Counter',
+                'role_id' => 7,
+                'company_id' => 4,
+                'counter_id' => 1,
+                'email' => 'launchcounter@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            [
+                'name' => 'Plane Admin',
+                'role_id' => 8,
+                'company_id' => 5,
+                'counter_id' => 1,
+                'email' => 'planeadmin@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            [
+                'name' => 'Plane counter',
+                'role_id' => 9,
+                'company_id' => 5,
+                'counter_id' => 1,
+                'email' => 'planecounter@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            
+            [
+                'name' => 'Passenger',
+                'role_id' => 10,
+                'company_id' => 5,
+                'counter_id' => 1,
+                'email' => 'passenger@gmail.com',
                 'password' => Hash::make('1234'),
             ],
         ]);
