@@ -17,7 +17,7 @@ class CreateBusCountersTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('destination_id');
+            $table->unsignedBigInteger('destination_id'); //city
             $table->timestamps();
         });
     }
