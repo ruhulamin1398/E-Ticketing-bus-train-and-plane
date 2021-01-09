@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\busCounter;
+use App\company;
+use App\setting;
+use App\tpl;
 use App\tplSchedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use SebastianBergmann\LinesOfCode\Counter;
 
 class TplScheduleController extends Controller
 {
@@ -14,7 +21,23 @@ class TplScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $counter_id = Auth::user()->counter_id;
+        $counter = busCounter::find($counter_id);
+        $destination_id = $counter->destination_id;
+        $company_id = Auth::user()->company_id;
+        $schedules=  tplSchedule::where('company_id',$company_id)->get();
+        $tpls = tpl::where('company_id',$company_id)->where('from_destination_id',$destination_id)->get();
+
+
+        $settings = setting::where('table_name','tpl_schedules')->first();
+        $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
+        $dataArray=[
+            'settings'=>$settings,
+            'items' =>$schedules,
+            'tpls' => $tpls,
+        ];
+
+        return view('tpl.schedule.index', compact('dataArray','schedules','tpls'));
     }
 
     /**
@@ -35,7 +58,19 @@ class TplScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $schedule = new tplSchedule;
+        $schedule->tpl_id = $request->tpl_id;
+        $schedule->schedule = $request->schedule;
+
+        $schedule->counter_id = Auth::user()->counter_id;
+        $schedule->company_id = Auth::user()->company_id;
+
+        $company = company::find($schedule->company_id);
+        $company_type_id = $company->company_type_id;
+        $schedule->company_type_id = $company_type_id;
+        $schedule->save();
+
+        return redirect()->back()->withSuccess(['Successfully Created']);
     }
 
     /**
@@ -69,7 +104,8 @@ class TplScheduleController extends Controller
      */
     public function update(Request $request, tplSchedule $tplSchedule)
     {
-        //
+        $tplSchedule->update($request->all());
+        return redirect()->back()->withSuccess(['Successfully Updated']);
     }
 
     /**
@@ -80,6 +116,7 @@ class TplScheduleController extends Controller
      */
     public function destroy(tplSchedule $tplSchedule)
     {
-        //
+        $tplSchedule->delete();
+        return Redirect::back()->withErrors(["Item Deleted" ]);
     }
 }

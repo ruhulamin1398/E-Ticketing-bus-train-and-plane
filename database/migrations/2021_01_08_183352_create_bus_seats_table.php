@@ -18,6 +18,9 @@ class CreateBusSeatsTable extends Migration
             $table->unsignedBigInteger('schedule_id');
             $table->unsignedBigInteger('seat_id');
             $table->string('seat_name');
+            $table->string('customer_name')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->string('seat_phone')->nullable();
             $table->unsignedBigInteger('status_id');
             $table->timestamps();
         });
