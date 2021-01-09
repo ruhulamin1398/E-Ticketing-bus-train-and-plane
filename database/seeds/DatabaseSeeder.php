@@ -253,6 +253,11 @@ class DatabaseSeeder extends Seeder
                 'name' => 'hanif',
                 'description' => 'hanif Description',
                 'company_type_id' => 1,
+            ],
+            [
+                'name' => 'BD Train',
+                'description' => ' Description',
+                'company_type_id' => 2,
             ]
         ]);
 
@@ -338,6 +343,14 @@ class DatabaseSeeder extends Seeder
                 'company_id' => 1,
                 'counter_id' => 1,
                 'email' => 'buscounter@gmail.com',
+                'password' => Hash::make('1234'),
+            ],
+            [
+                'name' => 'train  admin',
+                'role_id' => 4,
+                'company_id' => 3,
+                'counter_id' => 1,
+                'email' => 'trainadmin@gmail.com',
                 'password' => Hash::make('1234'),
             ],
         ]);

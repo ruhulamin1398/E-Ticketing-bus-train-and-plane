@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\busCounter;
 use App\companyType;
 use App\destination;
 use App\setting;
@@ -20,13 +21,16 @@ class TplController extends Controller
     public function index()
     {
         $settings = setting::where('table_name','tpls')->first();
-        $destination_id = Auth::user()->counter_id;
+        $company_id = Auth::user()->company_id;
+        $counter_id = Auth::user()->counter_id;
+        $destination = busCounter::find($counter_id);
+        $destination_id = $destination->id;
+
         $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
         $dataArray=[
             'settings'=>$settings,
-            'items' => tpl::all(),
+            'items' => tpl::where('company_id',$company_id)->get(),
             'to_destinations' => destination::where('id','!=',$destination_id)->get(),
-            'types' => companyType::all(),
 
         ];
 
@@ -52,7 +56,36 @@ class TplController extends Controller
      */
     public function store(Request $request)
     {
-        $tpl 
+        $tpl = new tpl;
+        $tpl->name = $request->name;
+        $tpl->to_destination_id = $request->to_destination_id;
+        $tpl->distance = $request->distance;
+        $tpl->time = $request->time;
+
+        $tpl->company_id = Auth::user()->company_id;
+        $counter_id = Auth::user()->counter_id;
+        $destination = busCounter::find($counter_id);
+        $destination_id = $destination->id;
+        $tpl->from_destination_id =$destination_id;
+        $tpl->save();
+
+        
+        $tpl = new tpl;
+        $tpl->name = $request->name;
+        $tpl->from_destination_id = $request->to_destination_id;
+        $tpl->distance = $request->distance;
+        $tpl->time = $request->time;
+
+        $tpl->company_id = Auth::user()->company_id;
+        $counter_id = Auth::user()->counter_id;
+        $destination = busCounter::find($counter_id);
+        $destination_id = $destination->id;
+        $tpl->to_destination_id =$destination_id;
+        $tpl->save();
+
+
+
+        return redirect()->back()->withSuccess(['Successfully Created']);
     }
 
     /**
