@@ -120,7 +120,7 @@
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <p >Developed By <a target="_blank" href="https://abasas.tech"> <span class="font-weight-bold text-success"> Abasas Technologies</span> </a>
+                                <p >Developed By <a target="_blank" href="#"> <span class="font-weight-bold text-success">E - Ticket</span> </a>
                                 </p>
                             </div>
                         </div>
