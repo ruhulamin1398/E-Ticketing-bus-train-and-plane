@@ -8,7 +8,7 @@
         </button>
 
         <!-- Topbar Search -->
-        <div class="adminTitle" >Bus Admin</div>
+        <div class="adminTitle" >Masjid Mission Center </div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 

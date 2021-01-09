@@ -19,37 +19,37 @@ class SettingController extends Controller
   
 $a = '[{
     "componentDetails":{
-        "title":"Bus schedule List",
-        "editTitle":"Edit Bus schedule"
+        "title":" T.P.L Lists",
+        "editTitle":"Edit T.P.L"
     },
     "routes":{
         "create":{
-            "name":"bus.bus-schedules.store",
-            "link":"bus/bus-schedules"
+            "name":"tpl.store",
+            "link":"tpl"
         },
         "update":{
-            "name":"bus.bus-schedules.update",
-            "link":"bus/bus-schedules"
+            "name":"tpl.update",
+            "link":"tpl"
         },
         "delete":{
-            "name":"bus.bus-schedules.destroy",
-            "link":"bus/bus-schedules"
+            "name":"tpl.destroy",
+            "link":"tpl"
         }
     },
     "fieldList":[{
             
         "position":112,
 
-        "create":"1",
+        "create":"0",
         "read":"1",
-        "update":"1",
-        "require":"1",
+        "update":"0",
+        "require":"0",
 
        "input_type":"dropDown",
-       "name":"bus",
-       "database_name":"bus_id",
-       "title": "Bus",
-       "data" : "buses"
+       "name":"from_destination",
+       "database_name":"from_destination_id",
+       "title": "From",
+       "data" : "from_destinations"
     },{
             
         "position":112,
@@ -64,20 +64,6 @@ $a = '[{
        "database_name":"to_destination_id",
        "title": "To",
        "data" : "to_destinations"
-    },{
-            
-        "position":112,
-
-        "create":"1",
-        "read":"1",
-        "update":"1",
-        "require":"1",
-
-       "input_type":"dropDown",
-       "name":"company",
-       "database_name":"company_id",
-       "title": "Company",
-       "data" : "companies"
     },{
             
         "position":111,
@@ -110,34 +96,32 @@ $a = '[{
        "database_name":"time"
     },{
             
-        "position":111,
+        "position":112,
 
         "create":"1",
         "read":"1",
         "update":"1",
         "require":"1",
 
-       "input_type":"number",
-       "name":"cost",
-       "title":"Cost",
-
-
-       "database_name":"cost"
+       "input_type":"dropDown",
+       "name":"type",
+       "database_name":"company_type_id",
+       "title": "Type",
+       "data" : "types"
     },{
             
-        "position":111,
+        "position":112,
 
         "create":"1",
         "read":"1",
         "update":"1",
         "require":"1",
 
-       "input_type":"datetime-local",
-       "name":"schedule",
-       "title":"Schedule",
-
-
-       "database_name":"schedule"
+       "input_type":"dropDown",
+       "name":"type",
+       "database_name":"company_type_id",
+       "title": "Type",
+       "data" : "types"
     }
     ]
 }]' ;
@@ -145,7 +129,7 @@ $a = '[{
         
         // $setting = new setting;
         // $setting->setting = json_encode( $a);
-        // $setting->table_name = 'bus_schedules';
+        // $setting->table_name = 'tpls';
         // $setting->save();
         // return  "Success";
     

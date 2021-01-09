@@ -1,0 +1,1 @@
+@extends('plane.admin.includes.app')

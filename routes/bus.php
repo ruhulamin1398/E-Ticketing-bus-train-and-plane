@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
  
 Route::get('/', function () {
-    return view('superAdmin.index');
+    return view('bus.admin.includes.app');
 }); 
 
 Route::resource('/buses','BusController');
