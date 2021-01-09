@@ -102,7 +102,7 @@
 
             <div class=" mb-4  text-center  bg-abasas-dark p-2 ">
                 <div class="card border-none   bg-abasas-dark  h-100 p-2">
-                    <h3 class="text-white"> Location</h3>
+                    <h3 class="text-white"> Schedule</h3>
 
                     <div class="card-body">
 
@@ -113,27 +113,17 @@
                         <div class="col-auto">
 
 
-                            <span class="text-light pl-2">Road</span>
+                            {{-- <span class="text-light pl-2">Schedule</span> --}}
 
-                            <select class="form-control form-control" name="road_id" id='homepageSelectRoad' required>
-                                <option selected>Select Road </option>
+                            <select class="form-control form-control" name="road_id" id='homepageSelectSchedule' required>
+                                <option selected>Select Schedule </option>
                                 @foreach ($schedules as $schedule)
-                                <option value={{$schedule->id}}> {{$schedule->to_destination_id }} </option>
+                                <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
                                 @endforeach
                             </select>
 
                         </div>
-                        <div class="col-auto">
-
-
-                            <span class="text-light pl-2">Schedule</span>
-
-                            <select class="form-control form-control" name="schedule_id" id='homepageSelectSchedule' required>
-                                <option selected>Select Schedule </option>
-
-                            </select>
-
-                        </div>
+                        
 
 
 
