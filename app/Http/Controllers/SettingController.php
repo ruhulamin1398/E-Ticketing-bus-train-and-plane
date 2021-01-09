@@ -19,39 +19,24 @@ class SettingController extends Controller
   
 $a = '[{
     "componentDetails":{
-        "title":" Vehicle List",
-        "editTitle":"Edit Vehicle"
+        "title":" Schedule List",
+        "editTitle":"Edit Schedule"
     },
     "routes":{
         "create":{
-            "name":"tpl.store",
-            "link":"tpl"
+            "name":"tpl-schedule.store",
+            "link":"tpl-schedule"
         },
         "update":{
-            "name":"tpl.update",
-            "link":"tpl"
+            "name":"ttpl-schedulepl.update",
+            "link":"tpl-schedule"
         },
         "delete":{
-            "name":"tpl.destroy",
-            "link":"tpl"
+            "name":"tpl-schedule.destroy",
+            "link":"tpl-schedule"
         }
     },
     "fieldList":[{
-            
-        "position":1,
-
-        "create":"1",
-        "read":"1",
-        "update":"1",
-        "require":"1",
-
-       "input_type":"text",
-       "name":"name",
-       "title":"Name",
-
-
-       "database_name":"name"
-    },{
             
         "position":2,
 
@@ -61,54 +46,55 @@ $a = '[{
         "require":"0",
 
        "input_type":"dropDown",
-       "name":"from_destination",
-       "database_name":"from_destination_id",
-       "title": "From",
-       "data" : "from_destinations"
-    },{
-            
-        "position":3,
-
-        "create":"1",
-        "read":"1",
-        "update":"1",
-        "require":"1",
-
-       "input_type":"dropDown",
-       "name":"to_destination",
-       "database_name":"to_destination_id",
-       "title": "To",
-       "data" : "to_destinations"
-    },{
-            
-        "position":4,
-
-        "create":"1",
-        "read":"1",
-        "update":"1",
-        "require":"1",
-
-       "input_type":"number",
-       "name":"distance",
-       "title":"Distance (k.m.)",
-
-
-       "database_name":"distance"
+       "name":"tpl",
+       "database_name":"tpl_id",
+       "title": "Vehicle",
+       "data" : "tpls"
     },{
             
         "position":5,
 
-        "create":"1",
+        "create":"0",
         "read":"1",
         "update":"1",
         "require":"1",
 
-       "input_type":"number",
-       "name":"time",
-       "title":"Time (h.m)",
+       "input_type":"datetime-local",
+       "name":"schedule",
+       "title":"Schedule",
 
 
-       "database_name":"time"
+       "database_name":"schedule"
+    },{
+            
+        "position":5,
+
+        "create":"0",
+        "read":"1",
+        "update":"0",
+        "require":"0",
+
+       "input_type":"text",
+       "name":"from_destination",
+       "title":"From",
+
+
+       "database_name":"from_destination_id"
+    },{
+            
+        "position":5,
+
+        "create":"0",
+        "read":"1",
+        "update":"0",
+        "require":"0",
+
+       "input_type":"text",
+       "name":"to_destination",
+       "title":"To",
+
+
+       "database_name":"to_destination_id"
     }
     ]
 }]' ;
@@ -116,7 +102,7 @@ $a = '[{
         
         // $setting = new setting;
         // $setting->setting = json_encode( $a);
-        // $setting->table_name = 'tpls';
+        // $setting->table_name = 'tpl_schedules';
         // $setting->save();
         // return  "Success";
     
