@@ -8,7 +8,7 @@
         </button>
 
         <!-- Topbar Search -->
-        <div class="adminTitle" >Bus </div>
+        <div class="adminTitle" >Bus Admin</div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 

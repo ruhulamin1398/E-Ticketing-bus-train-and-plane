@@ -2,8 +2,6 @@
 <ul class="navbar-nav bg-abasas-dark  sidebar sidebar-dark accordion sidebar-toggled " id="accordionSidebar">
 
 
-    <hr class="sidebar-divider m-1 p-0 ">
-
 
      <li class="nav-item  ">
         <a class="nav-link p-3 " href="{{ route('bus.buses.index') }}">
