@@ -19,9 +19,8 @@ class CreateTplsTable extends Migration
             $table->unsignedBigInteger('from_destination_id');
             $table->unsignedBigInteger('to_destination_id');
             $table->double('distance',8,2);
-            $table->dateTime('time');
-            $table->unsignedBigInteger('company_type_id');
-            $table->unsignedBigInteger('return')->default(0);
+            $table->double('time',8,2);
+            $table->unsignedBigInteger('company_id');
             $table->timestamps();
         });
     }
