@@ -19,8 +19,8 @@ class SettingController extends Controller
   
 $a = '[{
     "componentDetails":{
-        "title":" T.P.L Lists",
-        "editTitle":"Edit T.P.L"
+        "title":" Vehicle List",
+        "editTitle":"Edit Vehicle"
     },
     "routes":{
         "create":{
@@ -38,7 +38,22 @@ $a = '[{
     },
     "fieldList":[{
             
-        "position":112,
+        "position":1,
+
+        "create":"1",
+        "read":"1",
+        "update":"1",
+        "require":"1",
+
+       "input_type":"text",
+       "name":"name",
+       "title":"Name",
+
+
+       "database_name":"name"
+    },{
+            
+        "position":2,
 
         "create":"0",
         "read":"1",
@@ -52,7 +67,7 @@ $a = '[{
        "data" : "from_destinations"
     },{
             
-        "position":112,
+        "position":3,
 
         "create":"1",
         "read":"1",
@@ -66,7 +81,7 @@ $a = '[{
        "data" : "to_destinations"
     },{
             
-        "position":111,
+        "position":4,
 
         "create":"1",
         "read":"1",
@@ -81,7 +96,7 @@ $a = '[{
        "database_name":"distance"
     },{
             
-        "position":111,
+        "position":5,
 
         "create":"1",
         "read":"1",
@@ -94,34 +109,6 @@ $a = '[{
 
 
        "database_name":"time"
-    },{
-            
-        "position":112,
-
-        "create":"1",
-        "read":"1",
-        "update":"1",
-        "require":"1",
-
-       "input_type":"dropDown",
-       "name":"type",
-       "database_name":"company_type_id",
-       "title": "Type",
-       "data" : "types"
-    },{
-            
-        "position":112,
-
-        "create":"1",
-        "read":"1",
-        "update":"1",
-        "require":"1",
-
-       "input_type":"dropDown",
-       "name":"type",
-       "database_name":"company_type_id",
-       "title": "Type",
-       "data" : "types"
     }
     ]
 }]' ;
