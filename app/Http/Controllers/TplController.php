@@ -135,4 +135,12 @@ class TplController extends Controller
         $tpl->delete();
         return Redirect::back()->withErrors(["Item Deleted" ]);
     }
+
+
+    
+    public function tplSeats($id)
+    {
+        $tpl = tpl::find($id);
+        return $tpl->seats;
+    }
 }
