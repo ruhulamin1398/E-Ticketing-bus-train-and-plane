@@ -143,11 +143,11 @@ $a = '[{
 }]' ;
 
         
-        $setting = new setting;
-        $setting->setting = json_encode( $a);
-        $setting->table_name = 'bus_schedules';
-        $setting->save();
-        return  "Success";
+        // $setting = new setting;
+        // $setting->setting = json_encode( $a);
+        // $setting->table_name = 'bus_schedules';
+        // $setting->save();
+        // return  "Success";
     
     }
 
