@@ -22,3 +22,12 @@ Route::resource('/bus-counters','BusCounterController');
 
 
 Route::resource('/bus-schedules','BusScheduleController');
+
+Route::get('counter-admin', 'BusAdminCounterController@index')->name('busCounterAdmin');
+
+//// Api routes
+
+Route::get('road-schedule-api', 'RoadController@roadScheduleApi')->name('road-schedule-api');
+Route::get('seat-schedule-api', 'ScheduleController@seatScheduleApi')->name('seat-schedule-api');
+Route::get('road-view-api', 'RoadController@roadViewApi')->name('road-view-api');
+Route::get('schedule-passenger-api', 'ScheduleController@schedulePassengerApi')->name('schedule-passenger-api');
