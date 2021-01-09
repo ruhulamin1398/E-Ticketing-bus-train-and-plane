@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\bus;
+use App\busCounter;
 use App\busSchedule;
 use App\busSeat;
 use App\company;
@@ -24,7 +25,11 @@ class BusScheduleController extends Controller
     public function index()
     {
         $company_id = Auth::user()->company_id;
-        $destination_id = Auth::user()->counter_id;
+
+        $counter_id = Auth::user()->counter_id;
+        $counter = busCounter::find($counter_id);
+
+        $destination_id = $counter->destination_id; //error
         $settings = setting::where('table_name','bus_schedules')->first();
         $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
         $dataArray=[
@@ -63,7 +68,14 @@ class BusScheduleController extends Controller
         $busSchedule = new busSchedule;
         $busSchedule->bus_id = $request->bus_id;
 
-        $busSchedule->from_destination_id =  Auth ::user()->counter_id;
+
+        
+        $counter_id = Auth::user()->counter_id;
+        $counter = busCounter::find($counter_id);
+
+        $destination_id = $counter->destination_id;
+
+        $busSchedule->from_destination_id =  $destination_id;
         $busSchedule->company_id =  Auth ::user()->company_id;
 
         $busSchedule->to_destination_id = $request->to_destination_id;
