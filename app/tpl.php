@@ -16,6 +16,11 @@ class tpl extends Model
         return $this->belongsTo('App\destination','to_destination_id','id');
     }
 
+
+    public function seats(){
+        return $this->hasMany('App\tplSeat','tpl_id','id');
+    }
+
     public function abasas(){
         $this->from_destination = $this->fromDestinations->name;
         $this->to_destination = $this->toDestinations->name;
