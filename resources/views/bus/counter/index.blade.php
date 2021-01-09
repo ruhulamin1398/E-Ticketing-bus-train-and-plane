@@ -116,7 +116,7 @@
                             {{-- <span class="text-light pl-2">Schedule</span> --}}
 
                             <select class="form-control form-control" name="road_id" id='homepageSelectSchedule' required>
-                                <option selected>Select Schedule </option>
+                                
                                 @foreach ($schedules as $schedule)
                                 <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
                                 @endforeach
