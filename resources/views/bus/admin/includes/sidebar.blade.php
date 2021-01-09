@@ -6,21 +6,21 @@
 
 
      <li class="nav-item  ">
-        <a class="nav-link p-3 " href="">
+        <a class="nav-link p-3 " href="{{ route('bus.buses.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Bus admin 1</span></a>
+            <span>Bus </span></a>
     </li> 
     <hr class="sidebar-divider m-1 p-0 ">
     <li class="nav-item  ">
-        <a class="nav-link p-3 " href="">
+        <a class="nav-link p-3 " href="{{ route('bus.bus-counters.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Bus admin 2</span></a>
+            <span>Bus Counter</span></a>
     </li>      
     <hr class="sidebar-divider m-1 p-0 ">
     <li class="nav-item  ">
-        <a class="nav-link p-3 " href="">
+        <a class="nav-link p-3 " href="{{ route('bus.bus-schedules.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Bus admin 3</span></a>
+            <span>Bus Schedule</span></a>
     </li>  
     
   
