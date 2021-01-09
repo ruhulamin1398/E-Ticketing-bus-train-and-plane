@@ -97,7 +97,7 @@ class BusScheduleController extends Controller
         
           $busSeat = new busSeat;
           $busSeat->schedule_id = $busSchedule->id;
-          $busSeat->status_id = 0;
+          $busSeat->status_id = 1;
           $busSeat->seat_id = $seats[$i]->id;
           $busSeat->seat_name = $seats[$i]->name;
           $busSeat->save();

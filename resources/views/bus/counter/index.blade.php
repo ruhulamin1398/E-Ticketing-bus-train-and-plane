@@ -59,14 +59,14 @@
 
                         <h3 class="text-white "> Schedule Ticket List</h3>
                     </div>
-                    <div class="card-body" id='scheduleTicketList'>
+                    <div class="card-body" >
 
 
 
 
                         <table class="table  table-borderless  bg-abasas-dark" width="100%">
 
-                            <tbody id='busBody'>
+                            <tbody id='scheduleTicketList'>
 
                             </tbody>
                         </table>
@@ -116,7 +116,7 @@
                             {{-- <span class="text-light pl-2">Schedule</span> --}}
 
                             <select class="form-control form-control" name="road_id" id='schedulePassengerPageSelectSchedule' required>
-                                {{-- <option selected>Select Schedule </option> --}}
+                                <option selected>Select Schedule </option>
                                 @foreach ($schedules as $schedule)
                                 <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
                                 @endforeach
@@ -256,11 +256,8 @@ var ticketCost = 0;;
 
 
 
-
-
-
-
-$("#schedulePassengerPageSelectSchedule").change(function () {
+function printScheduleSeat(){
+    
   var link = $("#busIndexLink").val().trim() + "/bus-schedule-seat?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
   console.log("link")
   console.log(link)
@@ -271,11 +268,13 @@ $("#schedulePassengerPageSelectSchedule").change(function () {
     console.log(data);
 html='';
     jQuery.each(data,function(i){
+        if(data[i].status_id==3){
         html +=' <tr>' ;
         html += '<td class="  word-break ">'+ data[i].seat_name+'</td>';
-        html += '<td class="  word-break ">'+ data[i]+'</td>';
-        html += '<td class="  word-break ">'+ data[i]+'</td>';
+        html += '<td class="  word-break ">'+ data[i].name+'</td>';
+        html += '<td class="  word-break ">'+ data[i].phone+'</td>';
         html += '</tr>';
+        }
 
     });
    
@@ -284,7 +283,12 @@ html='';
     $("#scheduleTicketList").html(html);
 
   });
+}
 
+printScheduleSeat();
+
+$("#schedulePassengerPageSelectSchedule").change(function () {
+printScheduleSeat();
 
 });
 
