@@ -6,6 +6,7 @@ use App\bus;
 use App\company;
 use App\setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class BusController extends Controller
@@ -17,11 +18,13 @@ class BusController extends Controller
      */
     public function index()
     {
+
+        $user_company_id = Auth::user()->company_id;
         $settings = setting::where('table_name','buses')->first();
         $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
         $dataArray=[
             'settings'=>$settings,
-            'items' => bus::all(),
+            'items' => bus::where('company_id',$user_company_id)->get(),
             'Companies' => company::all(),
         ];
 
