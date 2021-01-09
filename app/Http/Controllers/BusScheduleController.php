@@ -24,6 +24,7 @@ class BusScheduleController extends Controller
     public function index()
     {
         $company_id = Auth::user()->company_id;
+        $destination_id = Auth::user()->counter_id;
         $settings = setting::where('table_name','bus_schedules')->first();
         $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
         $dataArray=[
@@ -33,7 +34,7 @@ class BusScheduleController extends Controller
             // 'buses' => bus::all(),
             'buses' => bus::where('company_id',$company_id)->get(),
             'companies' => company::where('company_type_id',1)->get(),
-            'to_destinations' => destination::all(),
+            'to_destinations' => destination::where('id','!=',$destination_id)->get(),
         ];
 
         return view('bus.admin.bus.index', compact('dataArray'));
