@@ -17,7 +17,7 @@
          
 
             <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
-                <div class="card border-none   bg-abasas-dark  h-100 p-2 ">
+                <div class="card border-none   bg-abasas-dark    p-2 ">
 
                     <h3 class="text-white"> Passenger information</h3>
 
@@ -54,12 +54,12 @@
 
 
             <div class=" mb-4  text-center   p-2 ">
-                <div class="card     h-100 p-2">
+                <div class="card      p-2">
                     <div class="card-header bg-abasas-dark">
 
-                        <h3 class="text-white "> Seat Plan</h3>
+                        <h3 class="text-white "> Schedule Ticket List</h3>
                     </div>
-                    <div class="card-body" id='busSeatPlan'>
+                    <div class="card-body" id='scheduleTicketList'>
 
 
 
@@ -101,8 +101,8 @@
 
 
             <div class=" mb-4  text-center  bg-abasas-dark p-2 ">
-                <div class="card border-none   bg-abasas-dark  h-100 p-2">
-                    <h3 class="text-white"> Location</h3>
+                <div class="card border-none   bg-abasas-dark    p-2">
+                    <h3 class="text-white"> Schedule</h3>
 
                     <div class="card-body">
 
@@ -113,27 +113,17 @@
                         <div class="col-auto">
 
 
-                            <span class="text-light pl-2">Road</span>
+                            {{-- <span class="text-light pl-2">Schedule</span> --}}
 
-                            <select class="form-control form-control" name="road_id" id='homepageSelectRoad' required>
-                                <option selected>Select Road </option>
+                            <select class="form-control form-control" name="road_id" id='schedulePassengerPageSelectSchedule' required>
+                                {{-- <option selected>Select Schedule </option> --}}
                                 @foreach ($schedules as $schedule)
-                                <option value={{$schedule->id}}> {{$schedule->to_destination_id }} </option>
+                                <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
                                 @endforeach
                             </select>
 
                         </div>
-                        <div class="col-auto">
-
-
-                            <span class="text-light pl-2">Schedule</span>
-
-                            <select class="form-control form-control" name="schedule_id" id='homepageSelectSchedule' required>
-                                <option selected>Select Schedule </option>
-
-                            </select>
-
-                        </div>
+                        
 
 
 
@@ -152,10 +142,9 @@
 
 
             <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
-                <div class="card border-none   bg-abasas-dark  h-100 p-2 ">
+                <div class="card border-none   bg-abasas-dark    p-2 ">
 
                     <h3 class="text-white"> Cart</h3>
-
                     <div class="card-body ">
 
 
@@ -212,5 +201,98 @@
 
 
 
+<script>
 
+$(document).ready(function () {
+
+
+var cartArray = {};
+var ticketCost = 0;;
+
+
+
+// $("#schedulePassengerPageSelectRoad").change(function () {
+
+
+//   var link = $("#road-view-api").val().trim() + "?id=" + $("#schedulePassengerPageSelectRoad").val();
+//   $.get(link, function (data, status) {
+//     ticketCost = data.cost;
+//     cartArray = {};
+
+//     $("#busBody").html('');
+//   });
+
+
+
+//   var link = $("#road-schedule-api").val().trim() + "?id=" + $("#schedulePassengerPageSelectRoad").val();
+
+
+//   $.get(link, function (data, status) {
+
+//     var html = '<option selected>Select Schedule </option>'
+
+
+//     jQuery.each(data, function (row) {
+//       console.log(data[row])
+//       html += '<option value=' + data[row].id + '>' + data[row].date_time + ' </option>';
+//     });
+//     $('#schedulePassengerPageSelectSchedule').html(html);
+
+
+//   });
+
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$("#schedulePassengerPageSelectSchedule").change(function () {
+  var link = $("#busIndexLink").val().trim() + "/bus-schedule-seat?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
+  console.log("link")
+  console.log(link)
+  console.log("link")
+
+  $.get(link, function (data, status) {
+    console.log("data");
+    console.log(data);
+html='';
+    jQuery.each(data,function(i){
+        html +=' <tr>' ;
+        html += '<td class="  word-break ">'+ data[i].seat_name+'</td>';
+        html += '<td class="  word-break ">'+ data[i]+'</td>';
+        html += '<td class="  word-break ">'+ data[i]+'</td>';
+        html += '</tr>';
+
+    });
+   
+  
+
+    $("#scheduleTicketList").html(html);
+
+  });
+
+
+});
+
+
+
+
+});
+
+
+</script>
 @endsection
