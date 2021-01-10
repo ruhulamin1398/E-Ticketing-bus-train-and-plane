@@ -1,7 +1,11 @@
-
-@extends('bus.counter.includes.app')
+@extends('tpl.includes.app')
 
 @section('content')
+
+
+
+
+
 
 <!-- Content Row -->
 <div class="container-fluid ">
@@ -9,7 +13,7 @@
     <div class="row ">
 
         <!-- main body start -->
-        <div class="col-xl-6 col-lg-6 col-md-6   ">
+        <div class="col-12 col-md-8    ">
          
 
             <div class=" mb-4  text-center  bg-dark-color p-2  ">
@@ -22,11 +26,11 @@
                         <form>
                             @csrf
                             <div class="form-row align-items-center">
-                                <div class="col-auto">
+                                <div class="col-6 col-md-6">
                                     <span class=" pl-2"> Name</span>
                                     <input type="text" class="form-control mb-2" id="ticketCartPassengerName" required>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-12 col-md-6">
 
                                     <span class=" pl-2">phone</span>
                                     <input type="text" class="form-control mb-2" id="ticketCartPassengerPhone" required>
@@ -45,99 +49,12 @@
 
 
                 </div>
-            </div> 
-
-
-
-            <div class=" mb-4  text-center   p-2 ">
-                <div class="card      p-2">
-                    <div class="card-header bg-dark-color">
-
-                        <h3 class="text-white "> Seat Plan</h3>
-                    </div>
-                    <div class="card-body" >
-
-
-
-
-                        <table class="table  table-borderless  bg-dark-color" width="100%">
-
-                            <tbody id='seatPlan'>
-
-                            </tbody>
-                        </table>
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-
-
-
-
-                </div>
             </div>
 
 
 
-        </div>
-
-        <!-- Left Sidebar Start -->
-        <div class="col-xl-6 col-lg-6 col-md-6   ">
-
-
-
-
-
-            <div class=" mb-4  text-center  bg-dark-color p-2 ">
-                <div class="card border-none   bg-dark-color    p-2">
-                    <h3 class="text-white"> Schedule</h3>
-
-                    <div class="card-body">
-
-
-
-
-
-                        <div class="col-auto">
-
-
-                            {{-- <span class="text-light pl-2">Schedule</span> --}}
-
-                            <select class="form-control form-control" name="road_id" id='schedulePassengerPageSelectSchedule' required>
-                                <option selected>Select Schedule </option>
-                                @foreach ($schedules as $schedule)
-                                <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                        
-
-
-
-
-
-
-
-
-                    </div>
-
-
-
-
-                </div>
-            </div>
-
-
-             <div class=" mb-4  text-center  bg-dark-color p-2  ">
+ 
+            <div class=" mb-4  text-center  bg-dark-color p-2  ">
                 <div class="card border-none   bg-dark-color    p-2 ">
 
                     <h3 class="text-white"> Cart</h3>
@@ -163,8 +80,98 @@
 
 
                 </div>
-            </div> 
+            </div>
 
+
+        </div>
+
+        <!-- Left Sidebar Start -->
+        <div class="col-12 col-md-4   ">
+
+
+
+
+
+            <div class=" mb-4  text-center  bg-dark-color p-2 ">
+                <div class="card border-none   bg-dark-color    p-2">
+                    <h3 class="text-white"> Schedule</h3>
+
+                    <div class="card-body">
+
+
+
+
+
+                        <div class="col-auto">
+
+
+                            {{-- <span class="text-light pl-2">Schedule</span> --}}
+
+                            <select class="form-control form-control" name="road_id" id='schedulePassengerPageSelectSchedule' required>
+                                <option selected>Select Schedule </option>
+                                @foreach ($schedules as $schedule)
+                                @php
+                                    $schedule->abasas();
+                                @endphp
+                                <option value={{$schedule->id}}> {{$schedule->to_destination }} - {{$schedule->schedule }}  </option>
+                                @endforeach
+                            </select>
+
+                        </div>
+                        
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class=" mb-4  text-center   p-2 ">
+                <div class="card      p-2">
+                    <div class="card-header bg-dark-color">
+
+                        <h3 class="text-white "> Available Ticket List</h3>
+                    </div>
+                    <div class="card-body" >
+
+
+
+
+                        <table class="table    bg-dark-color" width="100%">
+
+                            <tbody id='scheduleTicketList'>
+
+                            </tbody>
+                        </table>
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
 
 
 
@@ -257,8 +264,8 @@ var ticketCost = 0;;
 
 
 function printScheduleSeat(){
-    
-  var link = $("#busIndexLink").val().trim() + "/bus-schedule-seat?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
+  var home = "{{route('home')}}";  
+  var link = home.trim() + "/tpl-schedule-available-seat-list?tpl_schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
   console.log("link")
   console.log(link)
   console.log("link")
@@ -267,14 +274,13 @@ function printScheduleSeat(){
     console.log("data");
     console.log(data);
 html='';
-    jQuery.each(data,function(i){
-        if(data[i].status_id==3){
+    jQuery.each(data,function(key,value){
+      
         html +=' <tr>' ;
-        html += '<td class="  word-break ">'+ data[i].seat_name+'</td>';
-        html += '<td class="  word-break ">'+ data[i].customer_name+'</td>';
-        html += '<td class="  word-break ">'+ data[i].customer_phone+'</td>';
+        html += '<td class="  word-break ">'+ key+'</td>';
+        html += '<td class="  word-break ">'+ value+'</td>';
         html += '</tr>';
-        }
+       
 
     });
    
@@ -285,20 +291,22 @@ html='';
   });
 }
 
-printScheduleSeat();
+    printScheduleSeat();
 
-$("#schedulePassengerPageSelectSchedule").change(function () {
-printScheduleSeat();
+    $("#schedulePassengerPageSelectSchedule").change(function () {
+        printScheduleSeat();
 
-});
-
-
+    });
 
 
-});
+
+
+                });
 
 
 </script>
+
+
 
 
 @endsection

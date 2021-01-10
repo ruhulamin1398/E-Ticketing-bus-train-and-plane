@@ -8,6 +8,7 @@ use App\setting;
 use App\tpl;
 use App\tplSchedule;
 use App\tplScheduleSeat;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -151,4 +152,23 @@ class TplScheduleController extends Controller
         $seats= tplScheduleSeat::where("tpl_schedule_id",$request->tpl_schedule_id)->get();
         return $seats;
     }
+    
+    
+    public function tplScheduleAvailableSeatList(Request $request){
+        
+        
+                $schedule= tplSchedule::where("id",$request->tpl_schedule_id)->first();
+                
+
+                $availableSeats=array();
+                foreach ( $schedule->tpls->seat_types as $type ){
+
+                    $available_seats = tplScheduleSeat::where("tpl_schedule_id",$request->tpl_schedule_id)->where("tpl_seat_id",$type->id)->where("status_id",1)->count();
+                        $availableSeats[$type->seat_type]= $available_seats;
+                }
+                return $availableSeats;
+            }
+
+
+
 }
