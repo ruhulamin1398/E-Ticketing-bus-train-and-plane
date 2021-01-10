@@ -20,7 +20,7 @@ class SuperAdmin
             return $next($request);
         }else{
 
-            return "You Are not Allowed";
+            return redirect('home');
         }
     }
 }

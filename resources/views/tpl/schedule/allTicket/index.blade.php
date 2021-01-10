@@ -1,4 +1,4 @@
-@extends('bus.counter.includes.app')
+@extends('tpl.includes.app')
 
 @section('content')
 
@@ -16,8 +16,8 @@
         <div class="col-xl-6 col-lg-6 col-md-6   ">
          
 {{-- 
-            <div class=" mb-4  text-center  bg-dark-color p-2  ">
-                <div class="card border-none   bg-dark-color    p-2 ">
+            <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
+                <div class="card border-none   bg-abasas-dark    p-2 ">
 
                     <h3 class="text-white"> Passenger information</h3>
 
@@ -55,7 +55,7 @@
 
             <div class=" mb-4  text-center   p-2 ">
                 <div class="card      p-2">
-                    <div class="card-header bg-dark-color">
+                    <div class="card-header bg-abasas-dark">
 
                         <h3 class="text-white "> Schedule Ticket List</h3>
                     </div>
@@ -64,7 +64,7 @@
 
 
 
-                        <table class="table  table-borderless  bg-dark-color" width="100%">
+                        <table class="table  table-borderless  bg-abasas-dark" width="100%">
 
                             <tbody id='scheduleTicketList'>
 
@@ -100,8 +100,8 @@
 
 
 
-            <div class=" mb-4  text-center  bg-dark-color p-2 ">
-                <div class="card border-none   bg-dark-color    p-2">
+            <div class=" mb-4  text-center  bg-abasas-dark p-2 ">
+                <div class="card border-none   bg-abasas-dark    p-2">
                     <h3 class="text-white"> Schedule</h3>
 
                     <div class="card-body">
@@ -118,7 +118,10 @@
                             <select class="form-control form-control" name="road_id" id='schedulePassengerPageSelectSchedule' required>
                                 <option selected>Select Schedule </option>
                                 @foreach ($schedules as $schedule)
-                                <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
+                                @php
+                                    $schedule->abasas();
+                                @endphp
+                                <option value={{$schedule->id}}> {{$schedule->to_destination }} - {{$schedule->schedule }}  </option>
                                 @endforeach
                             </select>
 
@@ -141,8 +144,8 @@
             </div>
 
 
-            {{-- <div class=" mb-4  text-center  bg-dark-color p-2  ">
-                <div class="card border-none   bg-dark-color    p-2 ">
+            {{-- <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
+                <div class="card border-none   bg-abasas-dark    p-2 ">
 
                     <h3 class="text-white"> Cart</h3>
                     <div class="card-body ">
@@ -261,8 +264,8 @@ var ticketCost = 0;;
 
 
 function printScheduleSeat(){
-    
-  var link = $("#busIndexLink").val().trim() + "/bus-schedule-seat?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
+  var home = "{{route('home')}}";  
+  var link = home.trim() + "/tpl-schedule-seat?tpl_schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
   console.log("link")
   console.log(link)
   console.log("link")
@@ -303,4 +306,8 @@ printScheduleSeat();
 
 
 </script>
+
+
+
+
 @endsection
