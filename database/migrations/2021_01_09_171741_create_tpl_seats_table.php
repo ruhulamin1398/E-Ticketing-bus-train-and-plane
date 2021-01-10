@@ -18,6 +18,7 @@ class CreateTplSeatsTable extends Migration
             $table->unsignedBigInteger('tpl_id');
             $table->string('seat_type');
             $table->integer('total_seat');
+            $table->double('cost',8,2);
             $table->timestamps();
         });
     }

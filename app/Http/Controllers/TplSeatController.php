@@ -48,8 +48,9 @@ class TplSeatController extends Controller
         $tplSeat->tpl_id = $request->tpl_id;
         $tplSeat->seat_type = $request->seat_type;
         $tplSeat->total_seat = $request->total_seat;
+        $tplSeat->cost = $request->cost;
         $tplSeat->save();
-        return redirect()->back()->withSuccess(['Successfully Created']);
+        return $tplSeat;
     }
 
     /**
@@ -94,6 +95,15 @@ class TplSeatController extends Controller
      */
     public function destroy(tplSeat $tplSeat)
     {
-        //
+        $tplSeat->delete();
+        return;
+    }
+
+
+    public function destroySeat($id)
+    {
+        $tplSeat = tplSeat::find($id);
+        $tplSeat->delete();
+        return;
     }
 }
