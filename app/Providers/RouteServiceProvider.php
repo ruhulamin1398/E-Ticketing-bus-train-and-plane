@@ -129,7 +129,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapTrainRoutes()
     {
         Route::prefix('train')
-        ->middleware(['web','auth'])
+        ->middleware(['web'])
         
             ->name('train.')
             ->namespace($this->namespace)
@@ -145,7 +145,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapPlaneRoutes()
     {
         Route::prefix('plane')
-        ->middleware(['web','auth'])
+        ->middleware('web')
         
             ->name('plane.')
             ->namespace($this->namespace)
@@ -160,7 +160,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapLaunchRoutes()
     {
-        Route::prefix(['web','auth'])
+        Route::prefix('launch')
         ->middleware('web')
         
             ->name('launch.')

@@ -73,6 +73,8 @@ class Kernel extends HttpKernel
         'SuperAdmin' => \App\Http\Middleware\SuperAdmin::class,
         'TrainAdmin' => \App\Http\Middleware\TrainAdmin::class,
         'TrainCounter' => \App\Http\Middleware\TrainCounter::class,
+        'TplAdmin' => \App\Http\Middleware\TplAdmin::class,
+        'TplCounter' => \App\Http\Middleware\TplCounter::class,
 
     ];
 }

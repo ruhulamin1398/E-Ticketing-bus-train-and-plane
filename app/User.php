@@ -156,6 +156,27 @@ class User extends Authenticatable
         }
     }
 
+    public function isTplAdmin()
+    {
+
+        if (Auth::user()->role_id == 4 || Auth::user()->role_id == 6 || Auth::user()->role_id == 8) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+    public function isTplCounter()
+    {
+        if (Auth::user()->role_id == 5 || Auth::user()->role_id == 7 || Auth::user()->role_id == 9 ) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
     
     public function companies(){
         return $this->belongsTo('App\company','company_id','id');

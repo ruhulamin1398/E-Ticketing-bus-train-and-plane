@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class BusAdmin
+class TplCounter
 {
     /**
      * Handle an incoming request.
@@ -17,16 +16,11 @@ class BusAdmin
      */
     public function handle($request, Closure $next)
     {
-    
-        if(Auth::User()->isBusAdmin()){
+        if(Auth::User()->isTplCounter()){
             return $next($request);
         }else{
 
             return redirect(route('home'));
         }
-
-
-
-        
     }
 }
