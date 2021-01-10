@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
 {
@@ -14,12 +15,65 @@ class IndexController extends Controller
      */
     public function index()
     {
-        // return "indexcontroller";
-        
-        if(is_null(Auth::user()->id)){
+
+        if (!Auth::check()) {
+
             return redirect(route('login'));
+        } else {
+
+            if (Auth::user()->isSuperAdmin()) {
+
+                return redirect(route('superAdmin.superAdminIndex'));
+
+            } elseif (Auth::user()->isBusAdmin()) {
+
+                return redirect(route('bus.buses.index'));
+
+            } elseif (Auth::user()->isBusCounter()) {
+
+                return redirect(route('bus.bus-schedules.index'));
+
+            } elseif (Auth::user()->isTrainAdmin()) {
+
+                return redirect(route('tpl.index'));
+
+            } elseif (Auth::user()->isTrainCounter()) {
+
+                return redirect(route('tpl-schedule.index'));
+
+            }elseif (Auth::user()->isLaunchAdmin()) {
+
+                return redirect(route('tpl.index'));
+
+            } elseif (Auth::user()->isLaunchCounter()) {
+
+                return redirect(route('tpl-schedule.index'));
+
+            } elseif (Auth::user()->isPlaneAdmin()) {
+
+                return redirect(route('tpl.index'));
+
+            } elseif (Auth::user()->isPlaneCounter()) {
+
+                return redirect(route('tpl-schedule.index'));
+            }
+            elseif (Auth::user()->isTplAdmin()) {
+
+                return redirect(route('tpl.index'));
+            }
+            elseif (Auth::user()->isTplCounter()) {
+
+                return redirect(route('tpl-schedule.index'));
+            }else{
+                return redirect('login');
+            }
+
+
         }
-        
+
+        //  return Auth::user()->role_id;
+
+
     }
 
     /**
