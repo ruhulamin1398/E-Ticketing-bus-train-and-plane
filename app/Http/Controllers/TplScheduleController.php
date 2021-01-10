@@ -142,4 +142,13 @@ class TplScheduleController extends Controller
         $tplSchedule->delete();
         return Redirect::back()->withErrors(["Item Deleted" ]);
     }
+
+    
+    
+    public function tplScheduleSeat(Request $request){
+
+
+        $seats= tplScheduleSeat::where("tpl_schedule_id",$request->tpl_schedule_id)->get();
+        return $seats;
+    }
 }
