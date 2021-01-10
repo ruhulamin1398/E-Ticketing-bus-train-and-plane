@@ -17,14 +17,24 @@ Route::get('/', function () {
     return view('bus.admin.includes.app');
 })->name("busIndex"); 
 
-Route::resource('/buses','BusController');
-Route::resource('/bus-counters','BusCounterController');
+
+Route::middleware(['BusAdmin'])->group(function () {
+    Route::resource('/bus-counters','BusCounterController');
+     Route::resource('/buses','BusController');
+});
 
 
-Route::resource('/bus-schedules','BusScheduleController');
 
-Route::get('bus-counter-new-ticket', 'BusCounterTicketController@index')->name('busCounterNewTicket');
-Route::get('bus-counter-tickets', 'BusAdminCounterController@index')->name('busCounterTickets');
+Route::middleware(['BusCounter'])->group(function () {
 
+    Route::get('bus-counter-new-ticket', 'BusCounterTicketController@index')->name('busCounterNewTicket');
+    Route::get('bus-counter-tickets', 'BusAdminCounterController@index')->name('busCounterTickets');
+    Route::resource('/bus-schedules','BusScheduleController');
+
+
+
+});
+
+// Api Route
 Route::get('bus-schedule-seat', 'BusScheduleController@busScheduleSeat')->name('bus-schedule-seat');
 //// Api routes

@@ -17,3 +17,14 @@ Route::get('/', function () {
     return view('train.admin.index');
 }); 
 
+
+Route::middleware(['web'])->group(function () {
+    //
+});
+
+
+
+Route::resource('tpl','TplController');
+Route::resource('tpl-schedule','TplScheduleController');
+Route::resource('tpl-seats','TplSeatController');
+Route::resource('tpl-counter-all-ticket','TplCounterTicketController');
