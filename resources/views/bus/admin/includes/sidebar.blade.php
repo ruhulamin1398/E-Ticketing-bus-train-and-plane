@@ -14,7 +14,6 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Bus Counter</span></a>
     </li>      
-    <hr class="sidebar-divider m-1 p-0 ">
  
     
   

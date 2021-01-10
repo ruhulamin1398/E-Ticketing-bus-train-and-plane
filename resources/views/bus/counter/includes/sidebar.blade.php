@@ -11,22 +11,23 @@
 
 
      <li class="nav-item  ">
-        <a class="nav-link p-3 " href="{{ route("bus.busCounterTickets") }}">
+        <a class="nav-link p-3 " href="{{ route("bus.busCounterNewTicket") }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>All Tickets</span></a>
+            <span>New Ticket</span></a>
     </li> 
 
+    <hr class="sidebar-divider m-1 p-0 ">
+
+
     <li class="nav-item  ">
-        <a class="nav-link p-3 " href="">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Bus Counter 2</span></a>
-    </li>      
+       <a class="nav-link p-3 " href="{{ route("bus.busCounterTickets") }}">
+           <i class="fas fa-fw fa-tachometer-alt"></i>
+           <span>All Tickets</span></a>
+   </li> 
+
+  
     
-    <li class="nav-item  ">
-        <a class="nav-link p-3 " href="">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Bus Counter 3</span></a>
-    </li>  
+
     
   
     {{-- 
