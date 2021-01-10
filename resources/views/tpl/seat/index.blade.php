@@ -171,7 +171,6 @@
 
 
     
-            var data = [ ['id', tplId] ];
             var home = "{{route('home')}}";
             var url = home.trim() + '/tpl-seat-api/'+ tplId ;
             tableData();
@@ -207,11 +206,12 @@
                             
 
                             html+=    '</tr>'
-                            $('#tbody').html(html);
                         })
+                        
+                        $('#tbody').html(html);
                     },
                     error:function (data) {
-                        alert('Erorr');
+                        alert('Table Print Erorr');
                         console.log(data);
                     }
                 });
@@ -221,8 +221,9 @@
 
             
             $(document).on('click','.dataDeleteItemClass',function(){
-                var id = $(this).attr('itemId');
-                var link = home.trim() + '/tpl-seat-delete-api/'+ id ;
+                $(this).prop("disabled",true);
+                var itemId = $(this).attr('itemId');
+                var link = home.trim() + '/tpl-seat-delete-api/'+ itemId ;
                 console.log(link)
                 $.ajax({
                     url: link,
@@ -232,7 +233,7 @@
                         tableData();
                     },
                     error:function () {
-                        alert('Erorr');
+                        alert('Delete Erorr');
                     }
                 });
 
@@ -247,7 +248,7 @@
 
             $(document).on('click','#submitBtn',function(){
 
-                
+                $('#submitBtn').prop("disabled",true);
                 var inputSeatType = $('#seat_type').val();
                 var inputTotalSeat = $('#total_seat').val();
                 var inputCost = $('#cost').val();
@@ -268,11 +269,11 @@
 
 
                 var data = $('#newSeatForm').serialize();
-                var url = $('#newSeatForm').attr('action');
+                var urlLink = $('#newSeatForm').attr('action');
 
 
                 $.ajax({
-                    url: url,
+                    url: urlLink,
                     data: data,
                     type: 'POST',
                     success: function (data) {
@@ -280,9 +281,10 @@
                         $('#total_seat').val('');
                         $('#cost').val('');
                         tableData();
+                        $('#submitBtn').prop("disabled",false);
                     },
                     error:function (data) {
-                        alert('Erorr');
+                        alert('Store Erorr');
                         console.log(data);
                     }
                 });
