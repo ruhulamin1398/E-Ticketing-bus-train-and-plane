@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
         'passenger' => \App\Http\Middleware\Passenger::class,
         'planeAdmin' => \App\Http\Middleware\PlaneAdmin::class,
         'planeCounter' => \App\Http\Middleware\PlaneCounter::class,
-        'superAdmin' => \App\Http\Middleware\SuperAdmin::class,
+        'SuperAdmin' => \App\Http\Middleware\SuperAdmin::class,
         'trainAdmin' => \App\Http\Middleware\TrainAdmin::class,
         'trainCounter' => \App\Http\Middleware\TrainCounter::class,
 

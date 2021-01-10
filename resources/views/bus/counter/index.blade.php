@@ -16,8 +16,8 @@
         <div class="col-xl-6 col-lg-6 col-md-6   ">
          
 {{-- 
-            <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
-                <div class="card border-none   bg-abasas-dark    p-2 ">
+            <div class=" mb-4  text-center  bg-dark-color p-2  ">
+                <div class="card border-none   bg-dark-color    p-2 ">
 
                     <h3 class="text-white"> Passenger information</h3>
 
@@ -55,7 +55,7 @@
 
             <div class=" mb-4  text-center   p-2 ">
                 <div class="card      p-2">
-                    <div class="card-header bg-abasas-dark">
+                    <div class="card-header bg-dark-color">
 
                         <h3 class="text-white "> Schedule Ticket List</h3>
                     </div>
@@ -64,7 +64,7 @@
 
 
 
-                        <table class="table  table-borderless  bg-abasas-dark" width="100%">
+                        <table class="table  table-borderless  bg-dark-color" width="100%">
 
                             <tbody id='scheduleTicketList'>
 
@@ -100,8 +100,8 @@
 
 
 
-            <div class=" mb-4  text-center  bg-abasas-dark p-2 ">
-                <div class="card border-none   bg-abasas-dark    p-2">
+            <div class=" mb-4  text-center  bg-dark-color p-2 ">
+                <div class="card border-none   bg-dark-color    p-2">
                     <h3 class="text-white"> Schedule</h3>
 
                     <div class="card-body">
@@ -141,8 +141,8 @@
             </div>
 
 
-            {{-- <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
-                <div class="card border-none   bg-abasas-dark    p-2 ">
+            {{-- <div class=" mb-4  text-center  bg-dark-color p-2  ">
+                <div class="card border-none   bg-dark-color    p-2 ">
 
                     <h3 class="text-white"> Cart</h3>
                     <div class="card-body ">
