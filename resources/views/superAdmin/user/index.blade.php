@@ -36,7 +36,7 @@
     <div class="card mb-4 shadow">
 
 
-        <div class="card-header py-3 bg-abasas-dark">
+        <div class="card-header py-3 bg-dark-color">
             <nav class="navbar navbar-dark ">
                 <a class="navbar-brand"> New user</a>
 
@@ -98,7 +98,7 @@
 
                 </div>
                 <div class="col-12 pl-4">
-                    <button type="submit" class="btn bg-abasas-dark mt-3">Submit</button>
+                    <button type="submit" class="btn bg-dark-color mt-3">Submit</button>
                 </div>
 
             </form>
@@ -114,7 +114,7 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3 bg-abasas-dark">
+        <div class="card-header py-3 bg-dark-color">
             <nav class="navbar navbar-dark ">
                 <a class="navbar-brand">User list</a>
             </nav>
@@ -122,7 +122,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead class="bg-abasas-dark">
+                    <thead class="bg-dark-color">
 
 
                         <tr>
@@ -135,7 +135,7 @@
                             <th> Action</th>
                         </tr>
                     </thead>
-                    <tfoot class="bg-abasas-dark">
+                    <tfoot class="bg-dark-color">
                         <tr>
                             <th>User id</th>
                             <th>Name</th>

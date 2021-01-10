@@ -39,7 +39,7 @@
     <div class="card mb-4 shadow">
 
 
-        <div class="card-header py-3 bg-abasas-dark">
+        <div class="card-header py-3 bg-dark-color">
             <nav class="navbar navbar-dark ">
                 <a class="navbar-brand"> Select A Vahicle</a>
                 <div class="form-group col-4">
@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
 
-                    <div class="card-header py-3 bg-abasas-dark">
+                    <div class="card-header py-3 bg-dark-color">
                         <nav class="navbar navbar-dark ">
                             <a class="navbar-brand"> Current Seats</a>
                         </nav>
@@ -71,7 +71,7 @@
 
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="bg-abasas-dark">
+                            <thead class="bg-dark-color">
         
         
                                 <tr>
@@ -82,7 +82,7 @@
                                     <th> Action</th>
                                 </tr>
                             </thead>
-                            <tfoot class="bg-abasas-dark">
+                            <tfoot class="bg-dark-color">
                                 <tr>
                                     <th>#</th>
                                     <th>Seat Type</th>
@@ -109,7 +109,7 @@
 
                 <div class="col-md-6 col-sm-12">
 
-                    <div class="card-header py-3 bg-abasas-dark">
+                    <div class="card-header py-3 bg-dark-color">
                         <nav class="navbar navbar-dark ">
                             <a class="navbar-brand"> Add Seats</a>
                         </nav>
@@ -136,7 +136,7 @@
                             <input type="number" name="cost" class="form-control " id="cost" >
                         </div>
                         <div class="col-12 pl-4 tplNewSeat"  style="display: none;">
-                            <button type="button" id="submitBtn" class="btn bg-abasas-dark mt-3">Submit</button>
+                            <button type="button" id="submitBtn" class="btn bg-dark-color mt-3">Submit</button>
                         </div>
 
                     </form>

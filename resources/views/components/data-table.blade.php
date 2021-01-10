@@ -45,7 +45,7 @@
 <div class="collapse" id="createNewForm">
     <div class="card mb-4 shadow">
 
-        <div class="card-header py-3  bg-abasas-dark ">
+        <div class="card-header py-3  bg-dark-color ">
             <nav class="navbar navbar-dark">
                 <a class="navbar-brand text-light">  Add new</a>
             </nav>
@@ -68,7 +68,7 @@
 
                 </div>
                 <div class="col-12">
-                        <button type="submit" class="btn bg-abasas-dark mt-3">Submit</button>
+                        <button type="submit" class="btn bg-dark-color mt-3">Submit</button>
                     </div>
 
             </form>
@@ -83,7 +83,7 @@
 
  <div class="card shadow mb-4">
 
-    <div class="card-header py-3 bg-abasas-dark">
+    <div class="card-header py-3 bg-dark-color">
         <nav class="navbar  ">
 
             <div class="navbar-brand"><span id="componentDetailsTitle"> {{ $componentDetails['title']  }}</span> </div>
@@ -98,7 +98,7 @@
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead class="bg-abasas-dark">
+            <thead class="bg-dark-color">
 
                 <tr>
 
@@ -117,7 +117,7 @@
 
                 </tr>
             </thead>
-            <tfoot class="bg-abasas-dark">
+            <tfoot class="bg-dark-color">
                 <tr>
 
                     <th> #</th>
@@ -228,7 +228,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-abasas-dark">
+            <div class="modal-header bg-dark-color">
                 <h5 class="modal-title " id="edit-modal-label ">
                     {{ $componentDetails['editTitle'] }} </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -274,7 +274,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-abasas-dark">
+            <div class="modal-header bg-dark-color">
                 <h5 class="modal-title " id="setting-modal-label "> {{ $componentDetails['title']  }}  </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true" class="text-light"   >&times;</span>
@@ -359,7 +359,7 @@
             </div>
 
     <div class="modal-footer">
-        <div class="btn bg-abasas-dark" id="settingsSaveButton"> Save</div>
+        <div class="btn bg-dark-color" id="settingsSaveButton"> Save</div>
     </div>
 
         </div>
