@@ -20,7 +20,7 @@ class TrainAdmin
             return $next($request);
         }else{
 
-            return "You Are not Allowed";
+            return redirect(route('home'));
         }
     }
 }

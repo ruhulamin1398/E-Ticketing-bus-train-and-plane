@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -113,7 +113,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapBusRoutes()
     {
         Route::prefix('bus')
-        ->middleware('web')
+        ->middleware(['web','auth'])
         
             ->name('bus.')
             ->namespace($this->namespace)
@@ -129,7 +129,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapTrainRoutes()
     {
         Route::prefix('train')
-        ->middleware('web')
+        ->middleware(['web','auth'])
         
             ->name('train.')
             ->namespace($this->namespace)
@@ -145,7 +145,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapPlaneRoutes()
     {
         Route::prefix('plane')
-        ->middleware('web')
+        ->middleware(['web','auth'])
         
             ->name('plane.')
             ->namespace($this->namespace)
@@ -160,7 +160,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapLaunchRoutes()
     {
-        Route::prefix('launch')
+        Route::prefix(['web','auth'])
         ->middleware('web')
         
             ->name('launch.')
