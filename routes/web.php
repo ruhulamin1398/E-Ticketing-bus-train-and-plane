@@ -15,16 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['TplCounter','auth'])->group(function () {
 
-Route::resource('tpl-schedule','TplScheduleController');
-Route::resource('tpl-counter-all-ticket','TplCounterTicketController');
+    Route::resource('tpl-schedule','TplScheduleController');
+    Route::resource('tpl-counter-all-ticket','TplCounterTicketController');
+
+});
+
+
+Route::middleware(['TplAdmin','auth'])->group(function () {
+
+    Route::resource('tpl','TplController');
+    Route::resource('tpl-seats','TplSeatController');
+});
 
 
 
 
 
-Route::resource('tpl','TplController');
-Route::resource('tpl-seats','TplSeatController');
 
 Route::get('tpl-seat-api/{id}', 'TplController@tplSeats')->name('tpl-seat-api');
 Route::get('tpl-seat-delete-api/{id}', 'TplSeatController@destroySeat')->name('tpl-seat-delete-api');
