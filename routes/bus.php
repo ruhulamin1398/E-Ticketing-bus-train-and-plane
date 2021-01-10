@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
  
-// Route::get('/', function () {
-//     return view('bus.admin.includes.app');
-// })->name("busIndex"); 
+Route::get('/', function () {
+   return  abort(404);
+})->name("busIndex"); 
 
 
 Route::middleware(['BusAdmin'])->group(function () {
@@ -30,6 +30,8 @@ Route::middleware(['BusCounter'])->group(function () {
     Route::get('bus-counter-new-ticket', 'BusCounterTicketController@index')->name('busCounterNewTicket');
     Route::get('bus-counter-tickets', 'BusAdminCounterController@index')->name('busCounterTickets');
     Route::resource('/bus-schedules','BusScheduleController');
+    Route::post('bus-seats', 'BusSeatController@store')->name('bus-seats');
+
 
 
 
@@ -37,4 +39,5 @@ Route::middleware(['BusCounter'])->group(function () {
 
 // Api Route
 Route::get('bus-schedule-seat', 'BusScheduleController@busScheduleSeat')->name('bus-schedule-seat');
+Route::get('bus-schedule-api', 'BusScheduleController@busScheduleApi')->name('bus-schedule-api');
 //// Api routes

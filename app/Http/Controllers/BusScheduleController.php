@@ -51,6 +51,11 @@ class BusScheduleController extends Controller
         $seats= busSeat::where("schedule_id",$request->schedule_id)->get();
         return $seats;
     }
+    public function busScheduleApi(Request $request){
+
+        $schedule= busSchedule::find($request->schedule_id);
+        return $schedule;
+    }
     /**
      * Show the form for creating a new resource.
      *
