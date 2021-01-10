@@ -18,12 +18,11 @@ class BusAdmin
     public function handle($request, Closure $next)
     {
     
-
         if(Auth::User()->isBusAdmin()){
             return $next($request);
         }else{
 
-            return "You Are not Allowed";
+            return redirect(route('home'));
         }
 
 

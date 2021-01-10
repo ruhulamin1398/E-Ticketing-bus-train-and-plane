@@ -1,6 +1,7 @@
 <?php
 
 use App\setting;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::resource('tpl-schedule','TplScheduleController');
+Route::resource('tpl-counter-all-ticket','TplCounterTicketController');
+
+
+
 
 
 Route::resource('tpl','TplController');
-Route::resource('tpl-schedule','TplScheduleController');
 Route::resource('tpl-seats','TplSeatController');
-Route::resource('tpl-counter-all-ticket','TplCounterTicketController');
 
 Route::get('tpl-seat-api/{id}', 'TplController@tplSeats')->name('tpl-seat-api');
 Route::get('tpl-seat-delete-api/{id}', 'TplSeatController@destroySeat')->name('tpl-seat-delete-api');
@@ -33,9 +37,7 @@ Route::get('tpl-schedule-seat', 'TplScheduleController@tplScheduleSeat')->name('
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 'IndexController@index')->name('home');
 
 Auth::routes();
 

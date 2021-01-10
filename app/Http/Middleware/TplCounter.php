@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class TrainCounter
+class TplCounter
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class TrainCounter
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::User()->isTrainCounter()){
+        if(Auth::User()->isTplCounter()){
             return $next($request);
         }else{
 
