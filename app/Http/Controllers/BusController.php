@@ -25,7 +25,7 @@ class BusController extends Controller
         $dataArray=[
             'settings'=>$settings,
             'items' => bus::where('company_id',$user_company_id)->get(),
-            'Companies' => company::all(),
+
         ];
 
         return view('bus.admin.bus.index', compact('dataArray'));
@@ -50,7 +50,12 @@ class BusController extends Controller
      */
     public function store(Request $request)
     {
-        bus::create($request->all());
+        $bus =new bus;
+        $bus->name = $request->name;
+        $bus->total_seat = $request->total_seat;
+        $company_id = Auth::user()->company_id;
+        $bus->company_id = $company_id;
+        $bus->save();
         return redirect()->back()->withSuccess(['Successfully Created']);
     }
 

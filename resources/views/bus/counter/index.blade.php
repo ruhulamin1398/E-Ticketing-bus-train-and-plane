@@ -15,7 +15,7 @@
         <!-- main body start -->
         <div class="col-xl-6 col-lg-6 col-md-6   ">
          
-
+{{-- 
             <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
                 <div class="card border-none   bg-abasas-dark    p-2 ">
 
@@ -49,7 +49,7 @@
 
 
                 </div>
-            </div>
+            </div> --}}
 
 
 
@@ -141,7 +141,7 @@
             </div>
 
 
-            <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
+            {{-- <div class=" mb-4  text-center  bg-abasas-dark p-2  ">
                 <div class="card border-none   bg-abasas-dark    p-2 ">
 
                     <h3 class="text-white"> Cart</h3>
@@ -167,7 +167,11 @@
 
 
                 </div>
-            </div>
+            </div> --}}
+
+
+
+
         </div>
     </div>
 </div>
@@ -271,8 +275,8 @@ html='';
         if(data[i].status_id==3){
         html +=' <tr>' ;
         html += '<td class="  word-break ">'+ data[i].seat_name+'</td>';
-        html += '<td class="  word-break ">'+ data[i].name+'</td>';
-        html += '<td class="  word-break ">'+ data[i].phone+'</td>';
+        html += '<td class="  word-break ">'+ data[i].customer_name+'</td>';
+        html += '<td class="  word-break ">'+ data[i].customer_phone+'</td>';
         html += '</tr>';
         }
 

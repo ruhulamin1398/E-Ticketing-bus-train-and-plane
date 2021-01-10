@@ -7,6 +7,7 @@ use App\company;
 use App\setting;
 use App\tpl;
 use App\tplSchedule;
+use App\tplScheduleSeat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -72,6 +73,25 @@ class TplScheduleController extends Controller
         $schedule->company_type_id = $company_type_id;
         $schedule->from_destination_id = $destination_id;
         $schedule->save();
+
+
+
+        $tpl = tpl::find($schedule->tpl_id);
+        $tplSeats = $tpl->seats;
+        foreach ($tplSeats as $tplseat) {
+            for($i=1;$i<=$tplseat->total_seat;$i++)
+            {
+                $seat = new tplScheduleSeat;
+                $seat->tpl_schedule_id = $schedule->id;
+                $seat->tpl_seat_id = $tplseat->id;
+
+                $seat->seat_name = $tplseat->seat_type.$i;
+                $seat->status_id = 1;
+                $seat->save();
+
+            }
+        }
+        
 
         return redirect()->back()->withSuccess(['Successfully Created']);
     }

@@ -8,6 +8,7 @@ use App\destination;
 use App\setting;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class BusCounterController extends Controller
@@ -21,13 +22,12 @@ class BusCounterController extends Controller
     {
         
 
-
+    $company_id = Auth::user()->company_id;
     $settings = setting::where('table_name','bus_counters')->first();
     $settings->setting= json_decode(  json_decode(  $settings->setting,true),true);
     $dataArray=[
     'settings'=>$settings,
-    'items' => busCounter::all(),
-    'Companies' => company::all(),
+    'items' => busCounter::where('company_id',$company_id)->get(),
     'destination' => destination::all(),
 ];
 
@@ -53,7 +53,12 @@ return view('bus.admin.counter.index', compact('dataArray'));
      */
     public function store(Request $request)
     {
-        busCounter::create($request->all());
+        $counter =new busCounter;
+        $counter->name = $request->name;
+        $counter->destination_id = $request->destination_id;
+        $company_id = Auth::user()->company_id;
+        $counter->company_id = $company_id;
+        $counter->save();
         return redirect()->back()->withSuccess(['Successfully Created']);
     }
 
