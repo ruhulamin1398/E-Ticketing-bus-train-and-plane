@@ -20,6 +20,9 @@ class tpl extends Model
     public function seats(){
         return $this->hasMany('App\tplSeat','tpl_id','id');
     }
+    public function seat_types(){
+        return $this->hasMany('App\tplSeat','tpl_id','id');
+    }
 
     public function abasas(){
         $this->from_destination = $this->fromDestinations->name;

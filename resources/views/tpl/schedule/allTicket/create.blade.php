@@ -13,9 +13,9 @@
     <div class="row ">
 
         <!-- main body start -->
-        <div class="col-xl-6 col-lg-6 col-md-6   ">
+        <div class="col-12 col-md-8    ">
          
-{{-- 
+
             <div class=" mb-4  text-center  bg-dark-color p-2  ">
                 <div class="card border-none   bg-dark-color    p-2 ">
 
@@ -26,11 +26,11 @@
                         <form>
                             @csrf
                             <div class="form-row align-items-center">
-                                <div class="col-auto">
+                                <div class="col-6 col-md-6">
                                     <span class=" pl-2"> Name</span>
                                     <input type="text" class="form-control mb-2" id="ticketCartPassengerName" required>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-12 col-md-6">
 
                                     <span class=" pl-2">phone</span>
                                     <input type="text" class="form-control mb-2" id="ticketCartPassengerPhone" required>
@@ -49,37 +49,30 @@
 
 
                 </div>
-            </div> --}}
+            </div>
 
 
 
-            <div class=" mb-4  text-center   p-2 ">
-                <div class="card      p-2">
-                    <div class="card-header bg-dark-color">
+ 
+            <div class=" mb-4  text-center  bg-dark-color p-2  ">
+                <div class="card border-none   bg-dark-color    p-2 ">
 
-                        <h3 class="text-white "> Schedule Ticket List</h3>
-                    </div>
-                    <div class="card-body" >
-
+                    <h3 class="text-white"> Cart</h3>
+                    <div class="card-body ">
 
 
+                        <table class="table   table-striped  " width="100%">
+                            <thead class=" text-light ">
+                                <th>Seats</th>
+                                <th>price</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody class="text-light" id='cartBody'>
 
-                        <table class="table  table-borderless  bg-dark-color" width="100%">
 
-                            <tbody id='scheduleTicketList'>
 
                             </tbody>
                         </table>
-
-
-
-
-
-
-
-
-
-
 
                     </div>
 
@@ -90,11 +83,10 @@
             </div>
 
 
-
         </div>
 
         <!-- Left Sidebar Start -->
-        <div class="col-xl-6 col-lg-6 col-md-6   ">
+        <div class="col-12 col-md-4   ">
 
 
 
@@ -144,25 +136,34 @@
             </div>
 
 
-            {{-- <div class=" mb-4  text-center  bg-dark-color p-2  ">
-                <div class="card border-none   bg-dark-color    p-2 ">
 
-                    <h3 class="text-white"> Cart</h3>
-                    <div class="card-body ">
+            <div class=" mb-4  text-center   p-2 ">
+                <div class="card      p-2">
+                    <div class="card-header bg-dark-color">
 
-
-                        <table class="table   table-striped  " width="100%">
-                            <thead class=" text-light ">
-                                <th>Seats</th>
-                                <th>price</th>
-                                <th>Action</th>
-                            </thead>
-                            <tbody class="text-light" id='cartBody'>
+                        <h3 class="text-white "> Available Ticket List</h3>
+                    </div>
+                    <div class="card-body" >
 
 
+
+
+                        <table class="table    bg-dark-color" width="100%">
+
+                            <tbody id='scheduleTicketList'>
 
                             </tbody>
                         </table>
+
+
+
+
+
+
+
+
+
+
 
                     </div>
 
@@ -170,8 +171,7 @@
 
 
                 </div>
-            </div> --}}
-
+            </div>
 
 
 
@@ -265,7 +265,7 @@ var ticketCost = 0;;
 
 function printScheduleSeat(){
   var home = "{{route('home')}}";  
-  var link = home.trim() + "/tpl-schedule-seat?tpl_schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
+  var link = home.trim() + "/tpl-schedule-available-seat-list?tpl_schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
   console.log("link")
   console.log(link)
   console.log("link")
@@ -274,14 +274,13 @@ function printScheduleSeat(){
     console.log("data");
     console.log(data);
 html='';
-    jQuery.each(data,function(i){
-        if(data[i].status_id==3){
+    jQuery.each(data,function(key,value){
+      
         html +=' <tr>' ;
-        html += '<td class="  word-break ">'+ data[i].seat_name+'</td>';
-        html += '<td class="  word-break ">'+ data[i].customer_name+'</td>';
-        html += '<td class="  word-break ">'+ data[i].customer_phone+'</td>';
+        html += '<td class="  word-break ">'+ key+'</td>';
+        html += '<td class="  word-break ">'+ value+'</td>';
         html += '</tr>';
-        }
+       
 
     });
    
@@ -292,17 +291,17 @@ html='';
   });
 }
 
-printScheduleSeat();
+    printScheduleSeat();
 
-$("#schedulePassengerPageSelectSchedule").change(function () {
-printScheduleSeat();
+    $("#schedulePassengerPageSelectSchedule").change(function () {
+        printScheduleSeat();
 
-});
-
-
+    });
 
 
-});
+
+
+                });
 
 
 </script>

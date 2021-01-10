@@ -25,6 +25,17 @@ class TplCounterTicketController extends Controller
         return view('tpl.schedule.allTicket.index',compact('schedules'));
     }
 
+
+
+    // public function tplScheduleSeatList(Request $request){
+    //     return $request;
+        
+    //             $schedule= Schedule::where("tpl_schedule_id",$request->tpl_schedule_id)->first();
+    //             return $schedule;
+    //         }
+
+            
+
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +43,13 @@ class TplCounterTicketController extends Controller
      */
     public function create()
     {
-        //
+        $counter_id = Auth::user()->counter_id;
+        $company_id = Auth::user()->company_id;
+        $counter = busCounter::find($counter_id);
+        $destination_id = $counter->destination_id;
+        
+        $schedules= tplSchedule ::where('from_destination_id',$destination_id)->where('company_id',$company_id)->where("schedule",">",now())->get();
+        return view('tpl.schedule.allTicket.create',compact('schedules'));
     }
 
     /**
