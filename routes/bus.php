@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
  
-// Route::get('/', function () {
-//     return view('bus.admin.includes.app');
-// })->name("busIndex"); 
+Route::get('/', function () {
+   return  abort(404);
+})->name("busIndex"); 
 
 
 Route::middleware(['BusAdmin'])->group(function () {
