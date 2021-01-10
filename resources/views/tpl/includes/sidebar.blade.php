@@ -8,15 +8,20 @@
      <li class="nav-item  ">
         <a class="nav-link p-3 " href="{{ route('tpl.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>T.P.L </span></a>
+            <span>Vehicle </span></a>
     </li> 
+    <hr class="sidebar-divider m-1 p-0 ">
+    <li class="nav-item  ">
+        <a class="nav-link p-3 " href="{{ route('tpl-seats.index') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Seats</span></a>
+    </li>      
     <hr class="sidebar-divider m-1 p-0 ">
     <li class="nav-item  ">
         <a class="nav-link p-3 " href="{{ route('tpl-schedule.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>T.P.L Schedule</span></a>
-    </li>      
-
+            <span>Schedule</span></a>
+    </li>   
     
   
     {{-- 
