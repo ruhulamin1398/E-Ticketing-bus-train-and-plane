@@ -42,7 +42,7 @@ class BusScheduleController extends Controller
             'to_destinations' => destination::where('id','!=',$destination_id)->get(),
         ];
 
-        return view('bus.admin.bus.index', compact('dataArray'));
+        return view('bus.counter.schedule.index', compact('dataArray'));
 
 
     }

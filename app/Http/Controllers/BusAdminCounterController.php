@@ -16,7 +16,7 @@ class BusAdminCounterController extends Controller
         $counter = busCounter::find($counter_id);
         $destination_id = $counter->destination_id;
         
-        $schedules= busSchedule::where('from_destination_id',$destination_id)->get();
+        $schedules= busSchedule::where('from_destination_id',$destination_id)->where("schedule",">",now())->get();
         return view('bus.counter.index',compact('schedules'));
     }
 }
