@@ -23,7 +23,7 @@ Route::resource('/bus-counters','BusCounterController');
 
 Route::resource('/bus-schedules','BusScheduleController');
 
-Route::get('counter-admin', 'BusAdminCounterController@index')->name('busCounterAdmin');
+Route::get('bus-counter-admin', 'BusAdminCounterController@index')->name('busCounterAdmin');
 
 Route::get('bus-schedule-seat', 'BusScheduleController@busScheduleSeat')->name('bus-schedule-seat');
 //// Api routes
