@@ -24,9 +24,15 @@
 
     <hr class="sidebar-divider m-1 p-0 ">
     <li class="nav-item  ">
-        <a class="nav-link p-3 " href="{{ route('tpl-counter-all-ticket.index') }}">
+        <a class="nav-link p-3 " href="{{ route('tpl-counter-all-tickets') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>All Tickets</span></a>
+    </li>
+    <hr class="sidebar-divider m-1 p-0 ">
+    <li class="nav-item  ">
+        <a class="nav-link p-3 " href="{{ route('tpl-counter-new-ticket') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>New Ticket</span></a>
     </li>   
     
     @endif
