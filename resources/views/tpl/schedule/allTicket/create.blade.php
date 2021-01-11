@@ -67,7 +67,7 @@
                             @csrf
                             <div class="form-row align-items-center">
                                 <div class="col-6 col-md-6">
-                                    <span class=" pl-2"> Name</span>
+                                    <span class=" pl-2"> Type</span>
                                   
                                     <select class="form-control form-control" name="seat_type_id" id='seatTypeDropdown' required>
                                       
@@ -75,11 +75,28 @@
                                     </select>
                                 
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-6 col-md-6">
 
                                     <span class=" pl-2">Total Ticket</span>
-                                    <input type="text" class="form-control mb-2" id="ticketCartPassengerPhone" required>
+                                    <select class="form-control form-control" name="total_ticket" id='total_ticket_number' required>
+                                        {{-- <option selected disabled>Select Seat </option> --}}
+                                        {{-- <option value="1"> 1 </option>
+                                        <option value="2"> 2 </option> --}}
+                                    </select>
                                 </div>
+
+
+                                <div class="col-6 col-md-6" style="display: none;" id="total_ticket_cost_div" >
+                                   
+                                    <span class=" pl-2"> Cost</span>
+                                  
+                                    <input type="text" class="form-control form-control" id="total_ticket_cost"  readonly>
+                                      
+                                </div>
+                                <div class="col-6 col-md-6 p-4" >
+                                        <button class=" btn btn-success btn-lg btn-block p-2 " id="ticketSubmitBtn" type="button" style="display: none;" >Submit</button >
+                                </div>
+                              
 
 
 
@@ -214,6 +231,23 @@
 
 
 
+<form action="{{ route('tpl-schedule-seat') }}" method="post" id="ticketSubmitForm">
+
+    @csrf
+    <input type="number" name="tpl_schedule_id" id="tpl_schedule_id"  hidden  >
+
+    <input type="number" name="tpl_total_seat" id="tpl_total_seat"  hidden  >
+    
+    <input type="number" name="tpl_seat_id" id="tpl_seat_id"  hidden  >
+
+    <input type="text" value="MR. X" name="name" id="ticketCartPassengerNameInput"  hidden  >
+    <input type="text"  value="01"  name="phone" id="ticketCartPassengerPhoneInput"  hidden  >
+
+</form>
+
+
+
+
 
 
 <!-- Create new product -->
@@ -226,8 +260,53 @@
                   </div>
                   <div class="modal-body" id="attachment-body-content">
 
+                    <div class="card      p-2">
+                        <div class="card-header bg-dark-color">
 
-                    <button class="btn btn-success text-white"> <a href="" >  Reload </a> </button>
+    
+                            <h3 class="text-white " id="companyOnTicket"></h3>
+                        </div>
+                        <div class="card-body" >
+                                
+                        <table class="table   table-striped  " width="100%">
+                            
+                            <tbody class="text-dark">
+
+                                <tr>
+                                    <td> Passenger Name : </td>
+                                    <td id="passengerNameOnTicket"> </td>
+                                </tr>
+                                <tr>
+                                    <td> Passenger Phone : </td>
+                                    <td id="passengerPhoneOnTicket"></td>
+                                </tr>
+                                <tr>
+                                    <td> Schedule : </td>
+                                    <td id="scheduleOnTicket"></td>
+                                </tr>
+                                <tr>
+                                    <td> From : </td>
+                                    <td id="fromDestinationOnTicket"> </td>
+                                </tr>
+                                <tr>
+                                    <td> To : </td>
+                                    <td id="toDestinationOnTicket"> </td>
+                                </tr>
+                                <tr>
+                                    <td> Seats : </td>
+                                    <td id="SeatsOnTicket"> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        </div>
+    
+    
+    
+    
+                    </div>
+
+                    <button class="btn btn-success text-white"> <a href="" >  Print </a> </button>
 
                   </div>
 
@@ -244,45 +323,100 @@ $(document).ready(function () {
 
 var cartArray = {};
 var ticketCost = 0;;
+var scheduleSeatData ;
 
 
 
-// $("#schedulePassengerPageSelectRoad").change(function () {
+$(document).on('click','#ticketSubmitBtn',function(){
+    var data = $('#ticketSubmitForm').serialize();
+    var action =  $('#ticketSubmitForm').attr('action');
+    $.ajax({
+            type: 'POST',
+            url: action,
+            data: data,
+            success: function (successData) {
+                $('#companyOnTicket').text(successData.company_name);
+                $('#passengerNameOnTicket').text(successData.customer_name);
+                $('#passengerPhoneOnTicket').text(successData.customer_phone);
+                $('#scheduleOnTicket').text(successData.schedule);
+                $('#fromDestinationOnTicket').text(successData.from_destination);
+                $('#toDestinationOnTicket').text(successData.to_destination);
+                $('#SeatsOnTicket').text(successData.seats_name);
+                $("#create-ticket-reload-modal").modal();
 
 
-//   var link = $("#road-view-api").val().trim() + "?id=" + $("#schedulePassengerPageSelectRoad").val();
-//   $.get(link, function (data, status) {
-//     ticketCost = data.cost;
-//     cartArray = {};
+                
+            },
+            error: function (data) {
+            alert('Error');
+            console.log(data);
+            },
+        });
 
-//     $("#busBody").html('');
-//   });
-
-
-
-//   var link = $("#road-schedule-api").val().trim() + "?id=" + $("#schedulePassengerPageSelectRoad").val();
-
-
-//   $.get(link, function (data, status) {
-
-//     var html = '<option selected>Select Schedule </option>'
-
-
-//     jQuery.each(data, function (row) {
-//       console.log(data[row])
-//       html += '<option value=' + data[row].id + '>' + data[row].date_time + ' </option>';
-//     });
-//     $('#schedulePassengerPageSelectSchedule').html(html);
-
-
-//   });
-
-
-// });
+});
 
 
 
 
+
+
+            
+$("#ticketCartPassengerName").change(function () {
+
+    $("#ticketCartPassengerNameInput").val($("#ticketCartPassengerName").val());
+
+});
+
+$("#ticketCartPassengerPhone").change(function () {
+
+    $("#ticketCartPassengerPhoneInput").val($("#ticketCartPassengerPhone").val());
+
+});
+
+
+
+
+
+
+
+
+
+
+$(document).on('input','#seatTypeDropdown',function(){
+    
+    var seat_id = $('#seatTypeDropdown').val()
+    $('#tpl_seat_id').val(seat_id);
+    console.log(scheduleSeatData);
+    jQuery.each(scheduleSeatData,function(i){
+        if(scheduleSeatData[i].id == seat_id){
+            ticketCost = scheduleSeatData[i].cost;
+            var htmlSeat = '';
+            htmlSeat += '<option selected disabled>Select Seat </option>';
+            if(scheduleSeatData[i].seat >1){
+                htmlSeat += '<option value="1"> 1 </option>';
+                htmlSeat += '<option value="2"> 2 </option>';
+            }
+            if(scheduleSeatData[i].seat == 1){
+                htmlSeat += '<option value="1"> 1 </option>';
+            }
+            $('#total_ticket_number').html(htmlSeat);
+        }
+
+    });
+
+});
+
+
+
+$(document).on('input','#total_ticket_number',function(){
+    var totalSeat = $('#total_ticket_number').val();
+    
+    $('#total_ticket_cost').val(ticketCost*totalSeat);
+    $('#tpl_total_seat').val(totalSeat);
+    $('#ticketSubmitBtn').show();
+    $('#total_ticket_cost_div').show();
+
+});
 
 
 
@@ -302,17 +436,18 @@ function printScheduleSeat(){
   $.get(link, function (data, status) {
     console.log("data");
     console.log(data);
+    scheduleSeatData = data ;
 html='';
-dropdown="  <option selected>Select Seat </option>";
+dropdown="  <option selected disabled>Select Seat </option>";
     jQuery.each(data,function(key,value){
-      
+        
         html +=' <tr>' ;
         html += '<td class="  word-break ">'+ key+'</td>';
         html += '<td class="  word-break ">Tk '+ value.cost+'</td>';
-        html += '<td class="  word-break ">Tk '+ value.seat+'</td>';
+        html += '<td class="  word-break "> '+ value.seat+'</td>';
         html += '</tr>';
        
-dropdown+=" <option value="+ key.id + "> "+ key +"  </option>"
+dropdown+=" <option value="+ value.id + "> "+ key +"  </option>"
 
     });
    
@@ -327,7 +462,13 @@ dropdown+=" <option value="+ key.id + "> "+ key +"  </option>"
     printScheduleSeat();
 
     $("#schedulePassengerPageSelectSchedule").change(function () {
+        $('#ticketSubmitBtn').hide();
+        $('#total_ticket_cost_div').hide();
+        $("#seatTypeDropdown").html('');
+        $('#total_ticket_number').html('');
+        $('#tpl_schedule_id').val($("#schedulePassengerPageSelectSchedule").val());
         printScheduleSeat();
+
 
     });
 
