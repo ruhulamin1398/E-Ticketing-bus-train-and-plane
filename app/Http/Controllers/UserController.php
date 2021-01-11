@@ -31,7 +31,7 @@ class UserController extends Controller
         //     'companies' => company::all(),
         //     'roles' => role::all(),
         // ];
-        $users = User::all();
+        $users = User::where('role_id','!=', 1)->get();
         $company_types = companyType::all();
         $companies = company::all();
         $roles = role::all();
