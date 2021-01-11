@@ -8,12 +8,12 @@
         </button>
 
         <!-- Topbar Search -->
-        <div class="adminTitle" style = "text-transform:uppercase;">
+        <div class="adminTitle h4" style = "text-transform:capitalize;">
           @php
-              
-       $name = Auth::user()->name;
+        $company =App\company::find(Auth::user()->company_id)->name;
+
           @endphp
-        {{ $name }}
+          {{ $company }}
         </div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
