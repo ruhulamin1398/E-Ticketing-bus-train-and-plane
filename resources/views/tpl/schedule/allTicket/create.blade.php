@@ -13,7 +13,7 @@
     <div class="row ">
 
         <!-- main body start -->
-        <div class="col-12 col-md-8    ">
+        <div class="col-12 col-md-6    ">
          
 
             <div class=" mb-4  text-center  bg-dark-color p-2  ">
@@ -61,18 +61,40 @@
                     <div class="card-body ">
 
 
-                        <table class="table   table-striped  " width="100%">
-                            <thead class=" text-light ">
-                                <th>Seats</th>
-                                <th>price</th>
-                                <th>Action</th>
-                            </thead>
-                            <tbody class="text-light" id='cartBody'>
+
+
+                        <form>
+                            @csrf
+                            <div class="form-row align-items-center">
+                                <div class="col-6 col-md-6">
+                                    <span class=" pl-2"> Name</span>
+                                  
+                                    <select class="form-control form-control" name="seat_type_id" id='seatTypeDropdown' required>
+                                      
+                                     
+                                    </select>
+                                
+                                </div>
+                                <div class="col-12 col-md-6">
+
+                                    <span class=" pl-2">Total Ticket</span>
+                                    <input type="text" class="form-control mb-2" id="ticketCartPassengerPhone" required>
+                                </div>
 
 
 
-                            </tbody>
-                        </table>
+                            </div>
+
+                        </form>
+
+
+
+
+
+
+
+
+
 
                     </div>
 
@@ -86,7 +108,7 @@
         </div>
 
         <!-- Left Sidebar Start -->
-        <div class="col-12 col-md-4   ">
+        <div class="col-12 col-md-6   ">
 
 
 
@@ -149,6 +171,13 @@
 
 
                         <table class="table    bg-dark-color" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>price</th>
+                                    <th>Availability</th>
+                                </tr>
+                            </thead>
 
                             <tbody id='scheduleTicketList'>
 
@@ -274,19 +303,23 @@ function printScheduleSeat(){
     console.log("data");
     console.log(data);
 html='';
+dropdown="  <option selected>Select Seat </option>";
     jQuery.each(data,function(key,value){
       
         html +=' <tr>' ;
         html += '<td class="  word-break ">'+ key+'</td>';
-        html += '<td class="  word-break ">'+ value+'</td>';
+        html += '<td class="  word-break ">Tk '+ value.cost+'</td>';
+        html += '<td class="  word-break ">Tk '+ value.seat+'</td>';
         html += '</tr>';
        
+dropdown+=" <option value="+ key.id + "> "+ key +"  </option>"
 
     });
    
-  
+    
 
     $("#scheduleTicketList").html(html);
+    $("#seatTypeDropdown").html(dropdown);
 
   });
 }
@@ -298,10 +331,7 @@ html='';
 
     });
 
-
-
-
-                });
+  });
 
 
 </script>

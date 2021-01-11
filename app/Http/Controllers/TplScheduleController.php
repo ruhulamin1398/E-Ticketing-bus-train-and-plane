@@ -164,7 +164,9 @@ class TplScheduleController extends Controller
                 foreach ( $schedule->tpls->seat_types as $type ){
 
                     $available_seats = tplScheduleSeat::where("tpl_schedule_id",$request->tpl_schedule_id)->where("tpl_seat_id",$type->id)->where("status_id",1)->count();
-                        $availableSeats[$type->seat_type]= $available_seats;
+                    $availableSeats[$type->seat_type]['seat']= $available_seats;
+                    $availableSeats[$type->seat_type]['cost']= $type->cost;
+                    $availableSeats[$type->seat_type]['id']= $type->id;
                 }
                 return $availableSeats;
             }
