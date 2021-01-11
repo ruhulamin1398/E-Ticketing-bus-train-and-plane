@@ -12,6 +12,10 @@ class busSchedule extends Model
         return $this->belongsTo('App\company','company_id','id');
     }
 
+    public function seats(){
+        return $this->hasMany('App\busSeat','schedule_id','id');
+    }
+
     public function buses(){
         return $this->belongsTo('App\bus','bus_id','id');
     }
