@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\busSchedule;
 use App\companyType;
 use App\destination;
+use App\tplSchedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -99,17 +100,29 @@ class TicketController extends Controller
     }
     public function search(Request $request)
     {
-        if ($request->company_type_id == "1") {
+        $company_type_id = $request->company_type_id;
+        $to_destination_id = $request->to_destination_id;
+        if ($company_type_id == "1") {
             $time_start = $request->date . ' 00:00:00';
             $time_end = $request->date . ' 23:59:59';
-            $company_type_id = $request->company_type_id;
-            $bus_schedules  = busSchedule::where('from_destination_id', $request->from_destination_id)->where('to_destination_id', $request->to_destination_id)->where('schedule', '<=', $time_end)->where('schedule', '>=', $time_start)->get();
+            $bus_schedules  = busSchedule::where('from_destination_id', $request->from_destination_id)->where('to_destination_id', $to_destination_id)->where('schedule', '<=', $time_end)->where('schedule', '>=', $time_start)->get();
 
             foreach($bus_schedules as $schedule){
                  $schedule->available = $schedule->seats->where('status_id',1)->count();
             }
 
             return view('customer.search.bus', compact('company_type_id', 'bus_schedules'));
+        }
+        elseif ($company_type_id == "2" || $company_type_id == "3" || $company_type_id == "4") {
+            $time_start = $request->date . ' 00:00:00';
+            $time_end = $request->date . ' 23:59:59';
+           
+            $tpl_schedules = tplSchedule::where('company_type_id',$company_type_id)->where('from_destination_id', $request->from_destination_id)->where('schedule', '<=', $time_end)->where('schedule', '>=', $time_start)->get();
+   
+            return view('customer.search.tpl',compact('tpl_schedules','company_type_id','to_destination_id'));
+        }
+        else{
+            return abort(404);
         }
     }
 }

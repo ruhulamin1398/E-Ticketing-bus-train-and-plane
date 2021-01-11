@@ -11,6 +11,15 @@ class tplSchedule extends Model
     public function tpls(){
         return $this->belongsTo('App\tpl','tpl_id','id');
     }
+    public function company(){
+        return $this->belongsTo('App\company','company_id','id');
+    }
+    public function from(){
+        return $this->belongsTo('App\destination','from_destination_id','id');
+    }
+    public function seats(){
+        return $this->hasMany('App\tplScheduleSeat','tpl_schedule_id','id');
+    }
 
     public function abasas(){
         $this->tpl = $this->tpls->name;
