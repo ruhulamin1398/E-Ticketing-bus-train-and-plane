@@ -8,7 +8,13 @@
         </button>
 
         <!-- Topbar Search -->
-        <div class="adminTitle" >Train , Plane and Launch </div>
+        <div class="adminTitle" style = "text-transform:uppercase;">
+          @php
+              
+       $name = Auth::user()->name;
+          @endphp
+        {{ $name }}
+        </div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 
