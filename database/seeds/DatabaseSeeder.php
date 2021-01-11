@@ -470,5 +470,107 @@ class DatabaseSeeder extends Seeder
             ],
 
         ]);
+
+
+
+        DB::table('tpls')->insert([
+
+            [
+                'name' => 'Train (kaloni)',
+                'from_destination_id' => 1,
+                'to_destination_id' => 4,
+                'distance' => 320,
+                'time' => 7,
+                'company_id' => 3,
+            ],
+            [
+                'name' => 'Launch (Sikdar)',
+                'from_destination_id' => 1,
+                'to_destination_id' => 4,
+                'distance' => 320,
+                'time' => 7,
+                'company_id' => 4,
+            ],
+            [
+                'name' => 'Plane (BD Biman)',
+                'from_destination_id' => 1,
+                'to_destination_id' => 4,
+                'distance' => 320,
+                'time' => 7,
+                'company_id' => 5,
+            ],
+
+        ]);
+
+
+
+        DB::table('tpl_seats')->insert([
+
+            [
+                'tpl_id' => 1,
+                'seat_type' => 'Ac',
+                'total_seat' => 10,
+                'cost' => 700,
+            ],
+
+            [
+                'tpl_id' => 1,
+                'seat_type' => 'Non AC',
+                'total_seat' => 10,
+                'cost' => 500,
+            ],
+
+            [
+                'tpl_id' => 1,
+                'seat_type' => 'Shubon Chair',
+                'total_seat' => 10,
+                'cost' => 300,
+            ],
+            
+            [
+                'tpl_id' => 2,
+                'seat_type' => 'Ac',
+                'total_seat' => 10,
+                'cost' => 700,
+            ],
+
+            [
+                'tpl_id' => 2,
+                'seat_type' => 'Non AC',
+                'total_seat' => 10,
+                'cost' => 500,
+            ],
+
+            [
+                'tpl_id' => 2,
+                'seat_type' => 'Shubon Chair',
+                'total_seat' => 10,
+                'cost' => 300,
+            ],
+            
+            [
+                'tpl_id' => 3,
+                'seat_type' => 'Ac',
+                'total_seat' => 10,
+                'cost' => 700,
+            ],
+
+            [
+                'tpl_id' => 3,
+                'seat_type' => 'Non AC',
+                'total_seat' => 10,
+                'cost' => 500,
+            ],
+
+            [
+                'tpl_id' => 3,
+                'seat_type' => 'Shubon Chair',
+                'total_seat' => 10,
+                'cost' => 300,
+            ],
+
+
+        ]);
+
     }
 }
