@@ -8,7 +8,13 @@
         </button>
 
         <!-- Topbar Search -->
-        <div class="adminTitle" >Bus Admin</div>
+        <div class="adminTitle h4" style = "text-transform:capitalize;">
+          @php
+        $company =App\company::find(Auth::user()->company_id)->name;
+
+          @endphp
+          {{ $company }}
+        </div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 
