@@ -1,6 +1,6 @@
 
 
-<input type="text" name="" id="busIndexLink" value="{{ route("bus.busIndex") }}" hidden >
+
 
 <!DOCTYPE html>
 <html lang="en">

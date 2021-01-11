@@ -54,6 +54,7 @@ class BusScheduleController extends Controller
     public function busScheduleApi(Request $request){
 
         $schedule= busSchedule::find($request->schedule_id);
+        $schedule->toDestination = $schedule->destinations->name;
         return $schedule;
     }
     /**
