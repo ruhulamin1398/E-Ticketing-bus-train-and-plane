@@ -31,7 +31,7 @@ class IndexController extends Controller
 
             } elseif (Auth::user()->isBusCounter()) {
 
-                return redirect(route('bus.bus-schedules.index'));
+                return redirect(route('bus.busCounterNewTicket'));
 
             } elseif (Auth::user()->isTrainAdmin()) {
 
@@ -39,7 +39,7 @@ class IndexController extends Controller
 
             } elseif (Auth::user()->isTrainCounter()) {
 
-                return redirect(route('tpl-schedule.index'));
+                return redirect(route('tpl-counter-new-ticket'));
 
             }elseif (Auth::user()->isLaunchAdmin()) {
 
@@ -47,7 +47,7 @@ class IndexController extends Controller
 
             } elseif (Auth::user()->isLaunchCounter()) {
 
-                return redirect(route('tpl-schedule.index'));
+                return redirect(route('tpl-counter-new-ticket'));
 
             } elseif (Auth::user()->isPlaneAdmin()) {
 
@@ -55,7 +55,7 @@ class IndexController extends Controller
 
             } elseif (Auth::user()->isPlaneCounter()) {
 
-                return redirect(route('tpl-schedule.index'));
+                return redirect(route('tpl-counter-new-ticket'));
             }
             elseif (Auth::user()->isTplAdmin()) {
 
@@ -63,7 +63,7 @@ class IndexController extends Controller
             }
             elseif (Auth::user()->isTplCounter()) {
 
-                return redirect(route('tpl-schedule.index'));
+                return redirect(route('tpl-counter-new-ticket'));
             }else{
                 return redirect('login');
             }
