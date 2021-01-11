@@ -29,7 +29,7 @@ Route::middleware(['BusCounter'])->group(function () {
 
     Route::get('bus-counter-new-ticket', 'BusCounterTicketController@index')->name('busCounterNewTicket');
     Route::get('bus-counter-tickets', 'BusAdminCounterController@index')->name('busCounterTickets');
-    Route::resource('/bus-schedules','BusScheduleController');
+    Route::resource('bus-schedules','BusScheduleController');
     Route::post('bus-seats', 'BusSeatController@store')->name('bus-seats');
 
 
