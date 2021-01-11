@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\busCounter;
 use App\busSchedule;
+use App\company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +18,14 @@ class BusCounterTicketController extends Controller
     public function index()
     {
         $company_id = Auth::user()->company_id;
+        $counter_id = Auth::user()->counter_id;
+        $counter = busCounter::find($counter_id);
+        $from_destination = $counter->destination->name;
+        $company = company::find($company_id);
+        $company_name = $company->name;
         $schedules = busSchedule:: where('company_id',$company_id)->where('schedule','>=',now())->orderBy('schedule')->get();
 
-        return view('bus.counter.ticket.index',compact('schedules'));
+        return view('bus.counter.ticket.index',compact('schedules','company_name','from_destination'));
     }
 
     /**

@@ -202,8 +202,54 @@
                   </div>
                   <div class="modal-body" id="attachment-body-content">
 
+                    <div class="card      p-2">
+                        <div class="card-header bg-dark-color">
 
-                    <button class="btn btn-success text-white"> <a href="" >  Reload </a> </button>
+    
+                            <h3 class="text-white "> {{ $company_name }}</h3>
+                        </div>
+                        <div class="card-body" >
+                                
+                        <table class="table   table-striped  " width="100%">
+                            
+                            <tbody class="text-dark">
+
+                                <tr>
+                                    <td> Passenger Name : </td>
+                                    <td id="passengerNameOnTicket"> </td>
+                                </tr>
+                                <tr>
+                                    <td> Passenger Phone : </td>
+                                    <td id="passengerPhoneOnTicket"></td>
+                                </tr>
+                                <tr>
+                                    <td> Schedule : </td>
+                                    <td id="scheduleOnTicket"></td>
+                                </tr>
+                                <tr>
+                                    <td> From : </td>
+                                    <td> {{ $from_destination }}</td>
+                                </tr>
+                                <tr>
+                                    <td> To : </td>
+                                    <td id="toDestinationOnTicket"> </td>
+                                </tr>
+                                <tr>
+                                    <td> Seats : </td>
+                                    <td id="SeatsOnTicket"> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        </div>
+    
+    
+    
+    
+                    </div>
+
+
+                    <button class="btn btn-success text-white"> <a href="" >  Print </a> </button>
 
                   </div>
 
@@ -217,7 +263,7 @@
 
 $(document).ready(function () {
 
-
+var schedule ;
 var cartArray = {};
 var ticketCost = 0;;
 
@@ -265,12 +311,15 @@ var ticketCost = 0;;
     $("#ticketCartPassengerName").change(function () {
 
          $("#ticketCartPassengerNameInput").val($("#ticketCartPassengerName").val());
+         $("#passengerNameOnTicket").text($("#ticketCartPassengerName").val());
+         
 
     });
 
     $("#ticketCartPassengerPhone").change(function () {
 
           $("#ticketCartPassengerPhoneInput").val($("#ticketCartPassengerPhone").val());
+          $("#passengerPhoneOnTicket").text($("#ticketCartPassengerPhone").val());
 
     });
 
@@ -287,10 +336,14 @@ var ticketCost = 0;;
         
         var link = home.trim() + "/bus/bus-schedule-api?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
         $.get(link, function (data, status) {
+        schedule = data;
         ticketCost = data.cost;
         cartArray = {};
 
         $("#seatPlanBody").html('');
+        $("#scheduleOnTicket").text(data.schedule);
+        $("#toDestinationOnTicket").text(data.toDestination);
+
         showCart();
         });
 
@@ -406,7 +459,9 @@ var ticketCost = 0;;
 
     
   $("body").on("click", "#submit-cart-seat", function () {
+        var ticketLists = '';
         jQuery.each(cartArray, function (i) {
+        ticketLists += cartArray[i].name + ','
         $('#cart_bus_seat_id').val(cartArray[i].bus_set_id);
         $('#cart_schedule_id').val(cartArray[i].schedule_id);
 
@@ -430,7 +485,8 @@ var ticketCost = 0;;
 
         });
 
-
+        ticketLists
+        $('#SeatsOnTicket').text(ticketLists);
         $("#create-ticket-reload-modal").modal();
     });
 
