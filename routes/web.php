@@ -20,6 +20,7 @@ Route::middleware(['TplCounter','auth'])->group(function () {
     Route::resource('tpl-schedule','TplScheduleController');
     Route::get('tpl-counter-all-tickets','TplCounterTicketController@index')->name('tpl-counter-all-tickets');
     Route::get('tpl-counter-new-ticket','TplCounterTicketController@create')->name('tpl-counter-new-ticket');
+    Route::post('tpl-schedule-seat','TplScheduleSeatController@store')->name('tpl-schedule-seat');
 });
 
 
