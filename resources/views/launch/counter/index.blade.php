@@ -1,1 +1,0 @@
-@extends('launch.counter.includes.app')

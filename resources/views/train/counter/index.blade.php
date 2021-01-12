@@ -1,1 +1,0 @@
-@extends('train.counter.includes.app')
