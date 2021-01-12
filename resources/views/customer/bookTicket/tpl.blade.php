@@ -26,6 +26,43 @@
 
 
 
+
+
+                        
+                        <div class="row" id="payment_system">
+                            <div class="form-check col-4 p-4 ">
+                                <input class="form-check-input " type="radio" name="exampleRadios" id="account_type"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="account_type">
+                                    <img src="{{ asset('img/bkash.png') }}" alt="bkash" width="70px">
+                                </label>
+                            </div>
+
+                            <div class="form-check col-4 p-4">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="account_type"
+                                    value="option1" >
+                                <label class="form-check-label" for="account_type">
+                                    <img src="{{ asset('img/rocket.jpg') }}" alt="bkash" width="70px">
+                                </label>
+                            </div>
+
+                            <div class="form-check col-4 p-4">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="account_type"
+                                    value="option1" >
+                                <label class="form-check-label" for="account_type">
+                                    <img src="{{ asset('img/nogod.png') }}" alt="bkash" width="70px">
+                                </label>
+                            </div>
+                            <div class="form-check col-12 pb-4">
+                                
+                                
+                                <input class="form-control" type="tel" name="account_no" id="account_no" placeholder="Account No">
+                            </div>
+                        </div>
+
+
+
+
                         <form>
                             @csrf
                             <div class="form-row align-items-center">
@@ -227,7 +264,7 @@
     
                     </div>
 
-                    <button class="btn btn-success text-white"> <a href="" >  Print </a> </button>
+                    <a href="" >  <button class="btn btn-success text-white">  Print  </button></a>
 
                   </div>
 
@@ -249,6 +286,10 @@ var schedule = @json($schedule);
 
 
 $(document).on('click','#ticketSubmitBtn',function(){
+    var account = $('#account_no').val();
+    var len = account.length;
+    if(len>=11){
+        
     var data = $('#ticketSubmitForm').serialize();
     var action =  $('#ticketSubmitForm').attr('action');
     $.ajax({
@@ -257,6 +298,7 @@ $(document).on('click','#ticketSubmitBtn',function(){
             data: data,
             success: function (successData) {
                 $('#SeatsOnTicket').text(successData.seats_name);
+                console.log(successData);
                 $("#create-ticket-reload-modal").modal();
 
 
@@ -266,7 +308,15 @@ $(document).on('click','#ticketSubmitBtn',function(){
             alert('Error');
             console.log(data);
             },
-        });
+    });
+
+
+    }
+    else{
+        alert('Enter Valid Payment Account');
+    }
+
+
 
 });
 
