@@ -306,7 +306,7 @@
     
                     </div>
 
-                    <button class="btn btn-success text-white"> <a href="" >  Print </a> </button>
+                    <a href="" >  <button class="btn btn-success text-white">  Print  </button></a>
 
                   </div>
 
