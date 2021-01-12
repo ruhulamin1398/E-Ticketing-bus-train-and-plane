@@ -35,10 +35,10 @@ class BusSeatController extends Controller
      */
     public function store(Request $request)
     {
-
         $busSeat = busSeat::find($request->bus_seat_id);
         $busSeat->customer_name = $request->name;
         $busSeat->customer_phone  = $request->phone;
+        $busSeat->customer_id  = $request->user_id;
         $busSeat->status_id   = 3;
         $busSeat->save();
 

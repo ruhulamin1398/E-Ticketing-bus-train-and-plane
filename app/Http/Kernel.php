@@ -67,7 +67,7 @@ class Kernel extends HttpKernel
         'BusCounter' => \App\Http\Middleware\BusCounter::class,
         'LaunchAdmin' => \App\Http\Middleware\LaunchAdmin::class,
         'LaunchCounter' => \App\Http\Middleware\LaunchCounter::class,
-        'passenger' => \App\Http\Middleware\Passenger::class,
+        'Passenger' => \App\Http\Middleware\Passenger::class,
         'PlaneAdmin' => \App\Http\Middleware\PlaneAdmin::class,
         'PlaneCounter' => \App\Http\Middleware\PlaneCounter::class,
         'SuperAdmin' => \App\Http\Middleware\SuperAdmin::class,
