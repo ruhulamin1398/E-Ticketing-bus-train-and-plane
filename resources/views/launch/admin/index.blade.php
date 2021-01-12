@@ -1,1 +1,0 @@
-@extends('launch.admin.includes.app')
