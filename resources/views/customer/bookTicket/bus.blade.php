@@ -1,7 +1,7 @@
-
-@extends('bus.counter.includes.app')
+@extends('customer.includes.app')
 
 @section('content')
+
 
 <!-- Content Row -->
 <div class="container-fluid ">
@@ -12,40 +12,6 @@
         <div class="col-xl-6 col-lg-6 col-md-6   ">
          
 
-            <div class=" mb-4  text-center  bg-dark-color p-2  ">
-                <div class="card border-none   bg-dark-color    p-2 ">
-
-                    <h3 class="text-white"> Passenger information</h3>
-
-                    <div class="card-body ">
-
-                        <form>
-                            @csrf
-                            <div class="form-row align-items-center">
-                                <div class="col-12">
-                                    <span class=" pl-2"> Name</span>
-                                    <input type="text" class="form-control mb-2" id="ticketCartPassengerName" required>
-                                </div>
-                                <div class="col-12">
-
-                                    <span class=" pl-2">phone</span>
-                                    <input type="text" class="form-control mb-2" id="ticketCartPassengerPhone" required>
-                                </div>
-
-
-
-                            </div>
-
-                        </form>
-
-
-                    </div>
-
-
-
-
-                </div>
-            </div> 
 
 
 
@@ -94,47 +60,9 @@
 
 
 
+            {{-- #schedulePassengerPageSelectSchedule --}}
 
-
-            <div class=" mb-4  text-center  bg-dark-color p-2 ">
-                <div class="card border-none   bg-dark-color    p-2">
-                    <h3 class="text-white"> Schedule</h3>
-
-                    <div class="card-body">
-
-
-
-
-
-                        <div class="col-auto">
-
-
-                            {{-- <span class="text-light pl-2">Schedule</span> --}}
-
-                            <select class="form-control form-control" name="road_id" id='schedulePassengerPageSelectSchedule' required>
-                                <option selected disabled>Select Schedule </option>
-                                @foreach ($schedules as $schedule)
-                                <option value={{$schedule->id}}> {{$schedule->destinations->name }} - {{$schedule->schedule }}  </option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                        
-
-
-
-
-
-
-
-
-                    </div>
-
-
-
-
-                </div>
-            </div>
+          
 
 
              <div class=" mb-4  text-center  bg-dark-color p-2  ">
@@ -178,14 +106,14 @@
 
 
 
-<form action="{{route('bus.bus-seats')}}" method="post" id="ticketSubmitForm">
+<form action="{{route('bus.bus-seats')}}" method="POST" id="ticketSubmitForm">
 
     @csrf
     <input type="number" name="bus_seat_id" id="cart_bus_seat_id"  hidden  >
-    <input type="number" name="schedule_id" id="cart_schedule_id"  hidden  >
+    <input type="number" name="schedule_id" id="cart_schedule_id" value="{{ $schedule->id }}"  hidden  >
 
-    <input type="text" value="MR. X" name="name" id="ticketCartPassengerNameInput"  hidden  >
-    <input type="text"  value="01"  name="phone" id="ticketCartPassengerPhoneInput"  hidden  >
+    <input type="text" value="{{ Auth::user()->name }}" name="name"  hidden  >
+    <input type="text"  value="{{ Auth::user()->phone }}"  name="phone"   hidden  >
     <input type="text"  value="{{ Auth::user()->id }}"  name="user_id"   hidden  >
 
 </form>
@@ -207,7 +135,7 @@
                         <div class="card-header bg-dark-color">
 
     
-                            <h3 class="text-white "> {{ $company_name }}</h3>
+                            <h3 class="text-white "> {{ $schedule->companies->name }}</h3>
                         </div>
                         <div class="card-body" >
                                 
@@ -216,24 +144,24 @@
                             <tbody class="text-dark">
 
                                 <tr>
-                                    <td> Passenger Name : </td>
-                                    <td id="passengerNameOnTicket"> </td>
+                                    <td> Passenger Name :  </td>
+                                    <td id="passengerNameOnTicket"> {{ Auth::user()->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td> Passenger Phone : </td>
-                                    <td id="passengerPhoneOnTicket"></td>
+                                    <td> Passenger Phone :</td>
+                                    <td id="passengerPhoneOnTicket">{{ Auth::user()->phone }}</td>
                                 </tr>
                                 <tr>
                                     <td> Schedule : </td>
-                                    <td id="scheduleOnTicket"></td>
+                                    <td id="scheduleOnTicket">{{ $schedule->schedule }}</td>
                                 </tr>
                                 <tr>
                                     <td> From : </td>
-                                    <td> {{ $from_destination }}</td>
+                                    <td id="fromDestinationOnTicket">{{ $schedule->destinations->name }} </td>
                                 </tr>
                                 <tr>
                                     <td> To : </td>
-                                    <td id="toDestinationOnTicket"> </td>
+                                    <td id="toDestinationOnTicket">{{  $schedule->fromDestinations->name }} </td>
                                 </tr>
                                 <tr>
                                     <td> Seats : </td>
@@ -250,7 +178,7 @@
                     </div>
 
 
-                    <button class="btn btn-success text-white"> <a href="" >  Print </a> </button>
+                    <a href="" ><button class="btn btn-success text-white">   Print  </button></a>
 
                   </div>
 
@@ -308,49 +236,25 @@ var ticketCost = 0;;
 
 
 
-            
-    $("#ticketCartPassengerName").change(function () {
 
-         $("#ticketCartPassengerNameInput").val($("#ticketCartPassengerName").val());
-         $("#passengerNameOnTicket").text($("#ticketCartPassengerName").val());
-         
 
-    });
 
-    $("#ticketCartPassengerPhone").change(function () {
-
-          $("#ticketCartPassengerPhoneInput").val($("#ticketCartPassengerPhone").val());
-          $("#passengerPhoneOnTicket").text($("#ticketCartPassengerPhone").val());
-
-    });
+   
 
 
 
 
-
-
-    $(document).on('input','#schedulePassengerPageSelectSchedule',function(){
         var home = "{{ route('home') }}";
-
-
-
-        
-        var link = home.trim() + "/bus/bus-schedule-api?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
-        $.get(link, function (data, status) {
-        schedule = data;
-        ticketCost = data.cost;
+        var scheduleData = @json($schedule);
+        ticketCost = scheduleData.cost;
+        console.log(ticketCost);
         cartArray = {};
 
         $("#seatPlanBody").html('');
-        $("#scheduleOnTicket").text(data.schedule);
-        $("#toDestinationOnTicket").text(data.toDestination);
 
         showCart();
-        });
-
-
     
-        var link = home.trim() + "/bus/bus-schedule-seat?schedule_id=" + $("#schedulePassengerPageSelectSchedule").val();
+        var link = home.trim() + "/bus/bus-schedule-seat?schedule_id=" +scheduleData.id;
 
         $.get(link, function (data, status) {
             
@@ -429,7 +333,7 @@ var ticketCost = 0;;
         });
 
 
-    });
+
 
         
     $("body").on("click", ".seat", function () {
@@ -468,6 +372,7 @@ var ticketCost = 0;;
 
 
 
+
         var OPfrm = $('#ticketSubmitForm');
         var act = OPfrm.attr('action');
         $.ajax({
@@ -475,6 +380,7 @@ var ticketCost = 0;;
             url: act,
             data: OPfrm.serialize(),
             success: function (successData) {
+                
             console.log(successData);
             },
             error: function (data) {
@@ -486,7 +392,7 @@ var ticketCost = 0;;
 
         });
 
-        ticketLists
+        
         $('#SeatsOnTicket').text(ticketLists);
         $("#create-ticket-reload-modal").modal();
     });
@@ -508,6 +414,9 @@ var ticketCost = 0;;
 
 
 </script>
+
+
+
 
 
 @endsection

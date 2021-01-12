@@ -125,4 +125,25 @@ class TicketController extends Controller
             return abort(404);
         }
     }
+    public function bookTicket(Request $request)
+    {
+        if($request->company_type_id ==1){
+            $schedule= busSchedule::find($request->schedule_id);
+            if(is_null($schedule)){
+                return abort(404);
+            }
+            return view('customer.bookTicket.bus',compact('schedule'));
+        }
+        elseif($request->company_type_id > 1 && $request->company_type_id <=4 ){
+            $schedule= tplSchedule::find($request->schedule_id);
+            if(is_null($schedule)){
+                return abort(404);
+            }
+            $schedule->abasas();
+            return view('customer.bookTicket.tpl',compact('schedule'));
+        }
+        else{
+            return abort(404);
+        }
+    }
 }

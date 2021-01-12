@@ -33,10 +33,11 @@ Route::middleware(['TplAdmin','auth'])->group(function () {
 
 
 //customer
-
- Route::get('tickets/{name}','TicketController@show')->name('tickets');
+Route::middleware(['Passenger','auth'])->group(function () {
+ Route::get('tickets/{id}','TicketController@show')->name('tickets');
  Route::get('search','TicketController@search')->name('search');
-
+ Route::get('book-tocket','TicketController@bookTicket')->name('book-ticket');
+});
 //customer
 
 
@@ -46,6 +47,7 @@ Route::middleware(['TplAdmin','auth'])->group(function () {
 Route::get('tpl-seat-api/{id}', 'TplController@tplSeats')->name('tpl-seat-api');
 Route::get('tpl-seat-delete-api/{id}', 'TplSeatController@destroySeat')->name('tpl-seat-delete-api');
 Route::get('tpl-schedule-seat', 'TplScheduleController@tplScheduleSeat')->name('tpl-schedule-seat');
+
 
 
 Route::get('tpl-schedule-available-seat-list', 'TplScheduleController@tplScheduleAvailableSeatList')->name('tpl-schedule-available-seat-list');

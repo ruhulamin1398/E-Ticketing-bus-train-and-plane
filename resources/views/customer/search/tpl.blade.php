@@ -29,8 +29,11 @@
                     <td>{{ $schedule->company->name }}</td>
                     <td>{{ $schedule->tpls->name }}</td>
                     <td>{{ Carbon\Carbon::parse($schedule->schedule)->format('h:i:a') }}</td>
-
-                    <td><button type="button" class="btn btn-primary">Book Ticket</button></td>
+                    <form action="{{ route('book-ticket') }}" method="GET" >
+                        <input type="text" name="company_type_id" value="{{ $company_type_id }}" hidden>
+                        <input type="text" name="schedule_id" value="{{ $schedule->id }}" hidden>
+                    <td><button type="submit" class="btn btn-primary">Book Ticket</button></td>
+                    </form>
 
 
 

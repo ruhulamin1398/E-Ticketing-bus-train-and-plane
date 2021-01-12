@@ -64,6 +64,10 @@ class IndexController extends Controller
             elseif (Auth::user()->isTplCounter()) {
 
                 return redirect(route('tpl-counter-new-ticket'));
+            }
+            elseif (Auth::user()->isPassenger()) {
+
+                return redirect(route('tickets','bus'));
             }else{
                 return redirect('login');
             }

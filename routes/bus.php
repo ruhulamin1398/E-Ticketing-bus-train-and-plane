@@ -30,12 +30,13 @@ Route::middleware(['BusCounter'])->group(function () {
     Route::get('bus-counter-new-ticket', 'BusCounterTicketController@index')->name('busCounterNewTicket');
     Route::get('bus-counter-tickets', 'BusAdminCounterController@index')->name('busCounterTickets');
     Route::resource('bus-schedules','BusScheduleController');
-    Route::post('bus-seats', 'BusSeatController@store')->name('bus-seats');
 
 
 
 
 });
+Route::post('bus-seats', 'BusSeatController@store')->name('bus-seats');
+
 
 // Api Route
 Route::get('bus-schedule-seat', 'BusScheduleController@busScheduleSeat')->name('bus-schedule-seat');
