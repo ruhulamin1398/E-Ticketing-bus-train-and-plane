@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/masjeebl/public_html
+    # - export DEPLOYPATH=/home/mumixhqm/demos.abasas.tech/website/mmc
+    # - export DEPLOYPATH=/home/masjeebl/dev.masjidmissioncenterusa.org
+    - /bin/cp -r * $DEPLOYPATH #copy all from root
+    # - /bin/cp -r ./public/* $DEPLOYPATH/
+    # - /bin/cp ln -nfs $DEPLOYPATH/public $DEPLOYPATH
