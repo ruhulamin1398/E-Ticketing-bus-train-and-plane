@@ -543,28 +543,23 @@ class DatabaseSeeder extends Seeder
 
             [
                 'tpl_id' => 2,
-                'seat_type' => 'Shubon Chair',
+                'seat_type' => 'cabin',
                 'total_seat' => 10,
                 'cost' => 300,
             ],
             
-            [
-                'tpl_id' => 3,
-                'seat_type' => 'Ac',
-                'total_seat' => 10,
-                'cost' => 700,
-            ],
+           
 
             [
                 'tpl_id' => 3,
-                'seat_type' => 'Non AC',
+                'seat_type' => 'Biusiness',
                 'total_seat' => 10,
                 'cost' => 500,
             ],
 
             [
                 'tpl_id' => 3,
-                'seat_type' => 'Shubon Chair',
+                'seat_type' => 'Economy',
                 'total_seat' => 10,
                 'cost' => 300,
             ],
