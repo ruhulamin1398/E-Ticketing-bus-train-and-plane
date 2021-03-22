@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\busSchedule;
+use App\company;
 use App\companyType;
 use App\destination;
 use App\tplSchedule;
@@ -18,7 +19,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return abort(404);
+        
+        $destinations = destination::all();
+        return view('customer.index_all', compact('destinations', ));
     }
 
     /**
@@ -50,6 +53,8 @@ class TicketController extends Controller
      */
     public function show($id)
     {
+
+        return redirect(route('tickets_all'));
         if ($id == 'bus') {
             $company_type = companyType::find(1);
         } elseif ($id == 'train') {
@@ -100,7 +105,13 @@ class TicketController extends Controller
     }
     public function search(Request $request)
     {
+
         $company_type_id = $request->company_type_id;
+
+        
+        $company_type_name=  companyType::find($company_type_id)->name;
+
+
         $to_destination_id = $request->to_destination_id;
         if ($company_type_id == "1") {
             $time_start = $request->date . ' 00:00:00';
@@ -111,7 +122,7 @@ class TicketController extends Controller
                  $schedule->available = $schedule->seats->where('status_id',1)->count();
             }
 
-            return view('customer.search.bus', compact('company_type_id', 'bus_schedules'));
+            return view('customer.search.bus', compact('company_type_id', 'bus_schedules','company_type_name'));
         }
         elseif ($company_type_id == "2" || $company_type_id == "3" || $company_type_id == "4") {
             $time_start = $request->date . ' 00:00:00';
@@ -119,7 +130,7 @@ class TicketController extends Controller
            
             $tpl_schedules = tplSchedule::where('company_type_id',$company_type_id)->where('from_destination_id', $request->from_destination_id)->where('schedule', '<=', $time_end)->where('schedule', '>=', $time_start)->get();
    
-            return view('customer.search.tpl',compact('tpl_schedules','company_type_id','to_destination_id'));
+            return view('customer.search.tpl',compact('tpl_schedules','company_type_id','to_destination_id','company_type_name'));
         }
         else{
             return abort(404);

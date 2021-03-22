@@ -7,8 +7,6 @@
             <i class="fa fa-bars"></i>
         </button>
 
-        <!-- Topbar Search -->
-        <div class="adminTitle" >Masjid Mission Center </div>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 

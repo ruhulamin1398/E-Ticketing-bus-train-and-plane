@@ -33,7 +33,8 @@ Route::middleware(['TplAdmin','auth'])->group(function () {
 
 //customer
 Route::middleware(['Passenger','auth'])->group(function () {
- Route::get('tickets/{id}','TicketController@show')->name('tickets');
+    Route::get('tickets','TicketController@index')->name('tickets_all');
+    Route::get('tickets/{id}','TicketController@show')->name('tickets');
  Route::get('search','TicketController@search')->name('search');
  Route::get('book-tocket','TicketController@bookTicket')->name('book-ticket');
 });

@@ -8,7 +8,7 @@
     <div class="card-header bg-dark-color">
 
 
-        <h3 class="text-white ">Search Results</h3>
+        <h3 class="text-white ">Available {{$company_type_name}}</h3>
     </div>
     <div class="card-body">
 

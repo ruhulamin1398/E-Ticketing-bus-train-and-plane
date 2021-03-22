@@ -74,8 +74,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'launch Description'
             ],
             [
-                'name' => 'plane',
-                'description' => 'plane Description'
+                'name' => 'Airplane',
+                'description' => 'Airplane Description'
             ],
         ]);
         DB::table('statuses')->insert([
@@ -267,7 +267,7 @@ class DatabaseSeeder extends Seeder
             ],
             
             [
-                'name' => 'Plane Company',
+                'name' => 'Airplane  Company',
                 'description' => ' Description of train',
                 'company_type_id' => 4,
             ]

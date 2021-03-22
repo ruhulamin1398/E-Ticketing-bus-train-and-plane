@@ -2,6 +2,13 @@
 <ul class="navbar-nav bg-dark-color  sidebar sidebar-dark accordion sidebar-toggled " id="accordionSidebar">
 
 
+<li class="nav-item  ">
+        <a class="nav-link p-3 " href="{{ route('tickets_all') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Search  </span></a>
+    </li> 
+
+{{-- 
      <li class="nav-item  ">
         <a class="nav-link p-3 " href="{{ route('tickets','bus') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -23,10 +30,10 @@
     <li class="nav-item  ">
         <a class="nav-link p-3 " href="{{ route('tickets','plane') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Plane</span></a>
+            <span>Airplane</span></a>
     </li>      
 
-
+--}}
 
     
   
